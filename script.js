@@ -1,5 +1,5 @@
 
-const url = `https://ghibliapi.vercel.app/films/${code}` // l’url de la ressource de l’API
+const url = `https://ghibliapi.vercel.app/films/` // l’url de la ressource de l’API
         let fetchOptions = { method: 'GET' } // les options de fetch
         // executer la req AJAX
         fetch(url, fetchOptions)
