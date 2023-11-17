@@ -1,4 +1,5 @@
-        const url = `https://webmmi.iut-tlse3.fr/~gnt3695a/2a/ApiPoste/recherche.php/?code=${code}` // l’url de la ressource de l’API
+
+const url = `https://ghibliapi.vercel.app/films/${code}` // l’url de la ressource de l’API
         let fetchOptions = { method: 'GET' } // les options de fetch
         // executer la req AJAX
         fetch(url, fetchOptions)
