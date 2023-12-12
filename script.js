@@ -11,9 +11,5 @@ const url = `https://ghibliapi.vercel.app/films/` // l’url de la ressource de 
                 console.log(error) // gestion des erreurs
             })
 
-            
-    else { 
-        print("ELSE")
-    }
-    
+  
 // Affichage de l'API
