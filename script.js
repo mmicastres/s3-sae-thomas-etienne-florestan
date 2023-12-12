@@ -10,8 +10,6 @@ const url = `https://ghibliapi.vercel.app/films/` // l’url de la ressource de 
             .catch((error) => {
                 console.log(error) // gestion des erreurs
             })
-    }
     else { }
-}
-
-// Affichage de la météo
+    
+// Affichage de l'API
