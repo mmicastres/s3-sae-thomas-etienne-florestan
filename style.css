@@ -6,17 +6,17 @@
 header {
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Utilisation de space-between pour séparer les éléments à l'extrémité */
+    justify-content: space-evenly; /* Utilisation de space-between pour séparer les éléments à l'extrémité */
     padding: 10px; /* Ajout de rembourrage pour un meilleur aspect */
 }
 
 nav ul {
     list-style: none;
-    display: flex;
+    display: flex; 
 }
 
 nav ul li {
-    margin-right: 15px; /* Ajout d'une marge entre les éléments de la liste */
+    margin-right: 40px; /* Ajout d'une marge entre les éléments de la liste */
 }
 
 /* Pour éviter la marge à droite du dernier élément de la liste */
