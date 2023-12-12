@@ -3,6 +3,8 @@
     padding: 0;
 }
 
+/* HEADER */
+
 header {
     display: flex;
     align-items: center;
@@ -22,4 +24,11 @@ nav ul li {
 /* Pour éviter la marge à droite du dernier élément de la liste */
 nav ul li:last-child {
     margin-right: 0;
+}
+
+/* SLIDER */
+
+#slider {
+
+    background-image: url("img/bgporco.png");
 }
