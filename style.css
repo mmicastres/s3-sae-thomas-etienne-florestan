@@ -30,7 +30,17 @@ nav ul li:last-child {
 
 /* SLIDER */
 
+#slider img {
+
+   position: absolute;
+   max-width: fit-content;
+   width: 70%;
+}
+
 #slider {
 
-    background-image: url("img/bgporco.png");
+    display: flex;
+    justify-content: center;
+    
+
 }
