@@ -1,8 +1,25 @@
-*,body{
+*, body {
     margin: 0;
     padding: 0;
 }
 
-nav{
+header {
     display: flex;
+    align-items: center;
+    justify-content: space-evenly; /* Utilisation de space-between pour séparer les éléments à l'extrémité */
+    padding: 10px; /* Ajout de rembourrage pour un meilleur aspect */
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-right: 40px; /* Ajout d'une marge entre les éléments de la liste */
+}
+
+/* Pour éviter la marge à droite du dernier élément de la liste */
+nav ul li:last-child {
+    margin-right: 0;
 }
