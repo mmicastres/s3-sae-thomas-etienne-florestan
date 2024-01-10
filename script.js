@@ -13,3 +13,8 @@ const url = `https://ghibliapi.vercel.app/films/` // l’url de la ressource de 
 
   
 // Affichage de l'API
+
+
+
+
+// Script pour la barre de recherche (affectation de la classe hidden pour permettre l'animation)
