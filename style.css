@@ -23,6 +23,11 @@ header nav a {
 
 }
 
+/* Permet au bouttons de recevoir le curseur du parent html, sinon il est défini en default */
+button {
+    cursor : inherit;
+}
+
 #search {
     min-width: 0;
     max-width: 0px;
