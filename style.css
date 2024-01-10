@@ -103,5 +103,31 @@ nav ul li:last-child {
 #carouselExampleControls {
 
     margin-top: 5%;
+    margin-right: 15%;
+    margin-left: 15%;
 
+}
+
+.carousel-control-prev-icon {
+
+    background-image: none!important;
+    background: white;
+    width: 50px!important;
+    height: 50px!important;
+}
+
+.carousel-control-prev{
+    opacity: 1!important;
+}
+
+.carousel-control-next{
+    opacity: 1!important;
+}
+
+.carousel-control-next-icon {
+
+    background-image:  none!important;
+    background: white;
+    width: 50px!important;
+    height: 50px!important;
 }
