@@ -5,12 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Studio Ghibli Univers - Learn More About Ghibli</title>
+    <link href="https://api.fontshare.com/v2/css?f[]=clash-display@200,400,700,500,600,1,300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 
 <body id="body">
-    <header>
+    <header class="d-flex">
         <img src="img/iconsae.png" alt="" width="60" height="60">
         <nav>
             <ul>
@@ -23,9 +24,13 @@
         <input type="text" placeholder="Search your ghibli movies...">
     </header>
     <main>
-
+      <div id="top" class="d-flex">
+        <div id="textbutton">
         <h1 id="h1">GHIBLI WORLD JUST FOR YOU</h1> 
-        <img src="img/Avionclean.png" alt="">
+        <button><a href="#carouselExampleControls">Commencer</a></button>
+      </div>
+        <img src="img/Avionclean.png" alt="Avion du film Porco Rosso">
+      </div>
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="0">
             <div class="carousel-inner">
               <div class="carousel-item active">
