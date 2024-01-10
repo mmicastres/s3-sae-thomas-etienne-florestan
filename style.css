@@ -32,6 +32,12 @@ nav ul li:last-child {
 }
 
 
+/* BODY */
+
+h1 {
+    font-weight: bold;
+    color: #ffb800;
+}
 
 /* SLIDER */
 
