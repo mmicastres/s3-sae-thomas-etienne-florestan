@@ -1,4 +1,5 @@
 
+// Affichage de l'API
 const url = `https://ghibliapi.vercel.app/films/` // l’url de la ressource de l’API
         let fetchOptions = { method: 'GET' } // les options de fetch
         // executer la req AJAX
@@ -12,4 +13,6 @@ const url = `https://ghibliapi.vercel.app/films/` // l’url de la ressource de 
             })
 
   
-// Affichage de l'API
+// Barre de recherche
+
+document.getElementById("loupe").onclick=function() {document.getElementById("search").classList.add("searchactive")};
