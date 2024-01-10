@@ -1,6 +1,7 @@
+// On randomize pour avoir un numéro différent à chaque actualisation
 let cursor = Math.floor(Math.random() * 13);
 console.log(cursor);
-
+// Les liens avec le numéro random, pour rediriger vers un curseur différent à chaque fois
 const urlDefault = `url('cursors/Click${cursor}.svg')`;
 const urlGrab = `url('cursors/Grab${cursor}.svg')`;
 
@@ -8,18 +9,12 @@ const urlGrab = `url('cursors/Grab${cursor}.svg')`;
 document.querySelector("html").style.cursor = urlDefault + ", default";
 
 
-
-// Pour *essayer* définir le pointeur sur tous les liens en pointer personnalisé 
+// On récupère tous les liens pour appliquer le cursor : pointer personnalisé
 let liens = document.querySelectorAll("a");
 let i = 0
-
-while (i<liens.length) {
-    liens[i].addEventListener('mouseover', () => { document.querySelector("html").style.cursor = urlGrab + ", pointer"; })  
-    liens[i].addEventListener('mouseleave', () => { document.querySelector("html").style.cursor = urlDefault + ", default"; }) 
+// La boucle pour appliquer à tous 
+while (i < liens.length) {
+    liens[i].style.cursor = urlGrab + ", pointer"; //On focus uniquement les liens
     i++;
 }
 
-
-// PROBLEME : ON A LA PRIO SUR LHTML MAIS PAS SUR LES NAV A, CAR LE POINTEUR N'A PAS PLUSIEURS STATUS
-// LE A A DONC UNE CLASSE QUI DEFINI SON POINTEUR EN CHANGEANT LIMAGE
-// COMMENT PRENDRE LA PRIO SUR LE A ???
