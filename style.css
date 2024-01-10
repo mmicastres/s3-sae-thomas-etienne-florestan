@@ -34,7 +34,11 @@ nav ul li:last-child {
 
 /* BODY */
 
-h1 {
+#body {
+    background: #fffae6;
+}
+
+#h1 {
     font-weight: bold;
     color: #ffb800;
 }
