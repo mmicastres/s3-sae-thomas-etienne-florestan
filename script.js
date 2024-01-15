@@ -14,7 +14,7 @@ fetch(url, fetchOptions)
         for (let film of films) {
             texteHTML +=
                 `<div class="carousel-item">
-                <img class="d-block w-100" src="img/bgporco.png" alt="slide ${j}">
+                <img class="d-block w-100" src="img/bg/bgporco.png" alt="slide ${j}">
                 <div class="w-100">
                   <div class="name">
                     <p>${film.release_date}</p>
