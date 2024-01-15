@@ -52,7 +52,7 @@ fetch(url, fetchOptions)
 
   const ctx = document.getElementById('myChart');
   new Chart(ctx, {
-        type: 'bar',
+        type: 'line',
         data: {
             datasets: datasets,
             barThickness: 6,
