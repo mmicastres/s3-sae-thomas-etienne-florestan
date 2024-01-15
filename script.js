@@ -1,4 +1,5 @@
 let texteHTML = ""
+let datasets=[]
 let j = 0 //compteur image
 // Affichage de l'API
 const url = `https://ghibliapi.vercel.app/films/` // l’url de la ressource de l’API
@@ -37,12 +38,45 @@ fetch(url, fetchOptions)
                   </div>
                 </div>
               </div>`
-            j++
+            datasets[j]={ label : `${film.title}`,
+            data: [{
+              x: `${film.release_date}`,
+              y:  `${film.running_time}`,
+          }],}
+          j++
+
+
         }
         document.getElementById("carous").innerHTML = texteHTML
         document.querySelector(".carousel-item").classList.add("active");
 
-    })
+  const ctx = document.getElementById('myChart');
+  new Chart(ctx, {
+        type: 'bar',
+        data: {
+            datasets: datasets,
+            barThickness: 6,
+        },
+        options: {
+            plugins: {
+                legend: {
+                    position: 'right'
+                }
+            },
+            scales: {
+                y: {
+                    min: 0,
+                    max: 200,
+                },
+            },
+            legend: {
+                display: false,
+            }
+        }
+    });
+}
+
+    )
 
     .catch((error) => {
         console.log(error) // gestion des erreurs

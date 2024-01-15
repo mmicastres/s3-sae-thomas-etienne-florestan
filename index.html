@@ -205,57 +205,6 @@
 
 
 
-    <script>
-      const ctx = document.getElementById('myChart');
-      new Chart(ctx, {
-            type: 'bar',
-            data: {
-                datasets: [{
-                    label: 'Allemagne',
-                    data: [{
-                        x: 12.5,
-                        y: 24.5,
-                        r: 664 / 250
-                    }],
-                    backgroundColor: 'rgb(255, 99, 132)'
-                }, {
-                    label: 'Inde',
-                    data: [{
-                        x: 17.6,
-                        y: 23.8,
-                        r: 2442 / 250
-                    }],
-                    backgroundColor: 'rgb(0, 255, 255)'
-                }],
-            },
-            options: {
-                plugins: {
-                    legend: {
-                        position: 'right'
-                    }
-                },
-                scales: {
-                    y: {
-                        min: 0,
-                        max: 40,
-                    },
-                    x: {
-                        min: 0,
-                        max: 25,
-                    }
-                },
-                title: {
-                    display: true,
-                    text: "Émissions de CO2 d'origine fossile par an"
-                },
-                legend: {
-                    display: false,
-                }
-            }
-        });
-  
-    </script>
-
 
 
 
