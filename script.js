@@ -40,8 +40,8 @@ fetch(url, fetchOptions)
               </div>`
             datasets[j]={ label : `${film.title}`,
             data: [{
-              x: `${film.release_date}`,
-              y:  `${film.running_time}`,
+              y: `${film.release_date}`,
+              x:  `${film.running_time}`,
           }],}
           j++
 
@@ -55,23 +55,24 @@ fetch(url, fetchOptions)
         type: 'bar',
         data: {
             datasets: datasets,
-            barThickness: 6,
         },
         options: {
+          indexAxis: 'y',
             plugins: {
                 legend: {
                     position: 'right'
                 }
             },
             scales: {
-                y: {
+                x: {
                     min: 0,
-                    max: 200,
+                    max: 140,
                 },
+      
             },
             legend: {
                 display: false,
-            }
+            },
         }
     });
 }
