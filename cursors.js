@@ -18,3 +18,16 @@ while (i < liens.length) {
     i++;
 }
 
+
+// window.onload = function() {
+//     let cursor = Math.floor(Math.random() * 13);
+//     const urlDefault = `url('cursors/Click${cursor}.svg'), default`;
+//     const urlGrab = `url('cursors/Grab${cursor}.svg'), pointer`;
+
+//     document.querySelector("html").style.cursor = urlDefault;
+
+//     let links = document.querySelectorAll("a");
+//     for (let i = 0; i < links.length; i++) {
+//         links[i].style.cursor = urlGrab;
+//     }
+// }
