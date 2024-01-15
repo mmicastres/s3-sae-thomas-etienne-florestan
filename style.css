@@ -42,8 +42,7 @@ button {
     opacity: 1!important;
 }
 
-.tl-menubar{display: none;}
-.tl-attribution{display: none;}
+
 
 nav a:hover {
     color: black;
