@@ -25,6 +25,17 @@ let liensTrailers = [
   "https://www.youtube.com/watch?v=V--UCVHLzAY&ab_channel=NetflixAnime",
 ] //les liens des trailers
 let k = 0 //compteur image
+
+function truncate(desc) {
+  tailleMax = 250
+  if (desc.length > tailleMax) {
+    desc = desc.substring(0, 200) + "..."
+  }
+  else { }
+  return desc
+}
+
+// fonction traitement description
 // Affichage de l'API
 
 const url = `https://ghibliapi.vercel.app/films/` // l’url de la ressource de l’API
@@ -60,7 +71,7 @@ fetch(url, fetchOptions)
                     </div>
                   </div>
                   <div class="desc">
-                    <span class="text-justify">"${film.title}" ${film.description}</span>
+                    <span class="text-justify">"${film.title}" ${truncate(film.description)}</span>
                     <div id="auteur">
                       <h5><strong>Réalisateur :</strong> ${film.director}</h5>
                     </div>
