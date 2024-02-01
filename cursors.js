@@ -12,7 +12,6 @@ document.querySelector("html").style.cursor = urlDefault + ", default";
 // On récupère tous les liens pour appliquer le cursor : pointer personnalisé
 let liens = document.querySelectorAll("a");
 let i = 0
-console.log(liens)
 // La boucle pour appliquer à tous 
 while (i < liens.length) {
     liens[i].style.cursor = urlGrab + ", pointer"; //On focus uniquement les liens
@@ -21,7 +20,6 @@ while (i < liens.length) {
 
 let buttons = document.querySelectorAll("button");
 let j = 0
-console.log(buttons)
 
 // La boucle pour appliquer à tous 
 while (j < buttons.length) {
