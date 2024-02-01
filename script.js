@@ -33,7 +33,7 @@ fetch(url, fetchOptions)
                     </div>
                   </div>
                   <div class="desc">
-                    <span class="text-limit  text-justify">"${film.title}" ${film.description}</span>
+                    <span class="text-justify">"${film.title}" ${film.description}</span>
                     <div id="auteur">
                       <h5><strong>Réalisateur :</strong> ${film.director}</h5>
                     </div>
