@@ -8,9 +8,7 @@
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-    crossorigin="anonymous"></script>
+
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link href="https://api.fontshare.com/v2/css?f[]=clash-display@200,400,700,500,600,1,300&display=swap"
     rel="stylesheet">
@@ -45,10 +43,10 @@
     </div>
 
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="0">
-      <div id="carous" class="carousel-inner">
+      <div id="carous" class="m-3 carousel-inner ">
 
 
-        
+
 
 
       </div>
@@ -71,16 +69,38 @@
     </div>
 
 
+    <div id="comparaison m-3">
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-3">
+          <button type="button"
+            class="btn mb-2 mb-md-0 btn-film btn-block btn-round d-flex align-items-center justify-content-center"
+            value="1">
+            <img src="img/popcorn.png" alt="" width="40" style="padding: 0 5px;">FILMS
+          </button>
+        </div>
+  
+        <div class="col-md-3 ">
+          <button type="button"
+            class="btn mb-2 mb-md-0 btn-tomato btn-block btn-round d-flex align-items-center justify-content-center"
+            value="2">
+            <img src="img/tomate.png" alt="" width="40" style="padding: 0 5px;">ROTTEN TOMATO
+          </button>
+        </div>
+      </div>
+    </div>
+
     <div class="chart-container">
       <canvas id="myChart"></canvas>
-  </div>
+    </div>
 
-  <select name="" id=""></select>
 
-  <select name="" id=""></select>
+
+
+
+
 
   </main>
-  
+
   <script src="cursors.js"></script>
   <script src="script.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -96,20 +116,56 @@
     crossorigin="anonymous"></script>
 
 
+ 
+
+
+
+
 </body>
 
 
 <style>
 
-.chart-container{
-  position: relative;
+  .btn-tomato{
+    color: #fff;
+    border-color: #8bbabb;
+    background: #8bbabb;
+  }
+
+  .btn-film{
+    color: #ffffff;
+    border-color: #8bbabb;
+    background: #8bbabb;
+  }
+
+  .btn-tomato:hover{
+    color: #000000;
+    border-color: #8bbabb87;
+    background:#8bbabb87;
+  }
+
+  .btn-film:hover{
+    color: #000000;
+    border-color: #8bbabb87;
+    background: #8bbabb87;
+  }
+
+  .chart-container {
+    position: relative;
     height: 60vh;
     width: 80vw;
     display: flex;
-    margin:  50px 280px;
+    margin: 50px 280px;
     align-items: center;
     justify-content: center;
-}
+  }
+
+  .form-ajout {
+    height: 55px;
+    text-indent: 12px;
+    border-radius: 10px;
+    border: none;
+  }
 
   p {
     margin: 0;
@@ -117,7 +173,7 @@
 
   .carousel-control-prev {
     height: 3.5vw;
-    transform: translate(1vw,39vw);
+    transform: translate(1vw, 39vw);
   }
 
   .carousel-control-next {
@@ -136,7 +192,7 @@
     text-align: center;
     line-height: 80px;
   }
-  
+
   .name p {
     font-size: 35px;
     font-weight: 800;
@@ -164,7 +220,6 @@
     border-radius: 25px;
     font-weight: 400;
   }
-
 </style>
 
 </html>

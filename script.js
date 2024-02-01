@@ -1,9 +1,8 @@
 let texteHTML = ""
 let datasets = []
-let element = []
-
 let datasets2 = []
-let label = []
+let datasets3 = []
+let datasets4 = []
 
 let liensTrailers = [
   "https://www.youtube.com/watch?v=8ykEy-yPBFc&ab_channel=CrunchyrollStoreAustralia",
@@ -28,32 +27,11 @@ let liensTrailers = [
   "https://www.youtube.com/watch?v=jjmrxqcQdYg&ab_channel=CrunchyrollStoreAustralia",
   "https://www.youtube.com/watch?v=FRFAujm3rik&ab_channel=CrunchyrollStoreAustralia",
   "https://www.youtube.com/watch?v=V--UCVHLzAY&ab_channel=NetflixAnime",
-] 
+]
 
 let background = [
-  "https://www.youtube.com/watch?v=8ykEy-yPBFc&ab_channel=CrunchyrollStoreAustralia",
-  "https://www.youtube.com/watch?v=4vPeTSRd580&ab_channel=CrunchyrollStoreAustralia",
-  "https://www.youtube.com/watch?v=92a7Hj0ijLs&ab_channel=CrunchyrollStoreAustralia",
-  "https://www.youtube.com/watch?v=4bG17OYs-GA&ab_channel=CrunchyrollStoreAustralia",
-  "https://www.youtube.com/watch?v=OfkQlZArxw0&ab_channel=CrunchyrollStoreAustralia",
-  "https://www.youtube.com/watch?v=awEC-aLDzjs&ab_channel=CrunchyrollStoreAustralia",
-  "https://www.youtube.com/watch?v=_7cowIHjCD4&ab_channel=CrunchyrollStoreAustralia",
-  "https://www.youtube.com/watch?v=0pVkiod6V0U&ab_channel=CrunchyrollStoreAustralia",
-  "https://www.youtube.com/watch?v=4OiMOHRDs14&ab_channel=CrunchyrollStoreAustralia",
-  "https://www.youtube.com/watch?v=1C9ujuCPlnY&ab_channel=CrunchyrollStoreAustralia",
-  "https://www.youtube.com/watch?v=ByXuk9QqQkk&ab_channel=CrunchyrollStoreAustralia",
-  "https://www.youtube.com/watch?v=Gp-H_YOcYTM&ab_channel=CrunchyrollStoreAustralia",
-  "https://www.youtube.com/watch?v=iwROgK94zcM&ab_channel=CrunchyrollStoreAustralia",
-  "https://www.youtube.com/watch?v=8hxYx3Jq3kI&ab_channel=CrunchyrollStoreAustralia",
-  "https://www.youtube.com/watch?v=CsR3KVgBzSM&ab_channel=CrunchyrollStoreAustralia",
-  "https://www.youtube.com/watch?v=9CtIXPhPo0g&ab_channel=CrunchyrollStoreAustralia",
-  "https://www.youtube.com/watch?v=9nzpk_Br6yo&ab_channel=CrunchyrollStoreAustralia ",
-  "https://www.youtube.com/watch?v=YrueAaw0RYg&ab_channel=CrunchyrollStoreAustralia",
-  "https://www.youtube.com/watch?v=W71mtorCZDw&ab_channel=CrunchyrollStoreAustralia",
-  "https://www.youtube.com/watch?v=jjmrxqcQdYg&ab_channel=CrunchyrollStoreAustralia",
-  "https://www.youtube.com/watch?v=FRFAujm3rik&ab_channel=CrunchyrollStoreAustralia",
-  "https://www.youtube.com/watch?v=V--UCVHLzAY&ab_channel=NetflixAnime",
-] 
+
+]
 
 
 
@@ -86,21 +64,25 @@ fetch(url, fetchOptions)
     const dureeFilm = films.map(film => parseInt(film.running_time));
     const totalDureeFilm = dureeFilm.reduce((total, duree) => total + duree, 0);
     const dureeFilmMoyen = totalDureeFilm / films.length;
-    // Utiliser Math.round pour arrondir la moyenne pour l'affichage
-    const DureeFilmMoyenArrondi = Math.round(dureeFilmMoyen);
+
 
 
     // Calcul date sortie moyenne
     const Annee = films.map(film => parseInt(film.release_date));
     const totalAnnee = Annee.reduce((total, annee) => total + annee, 0);
     const anneeMoyenne = totalAnnee / films.length;
-    // Utiliser Math.round pour arrondir la moyenne pour l'affichage
-    const anneeMoyenneArrondi = Math.round(anneeMoyenne);
+
+
+    // Calcul Score moyenne film
+    const ScoreFilm = films.map(film => parseInt(film.rt_score));
+    const totalScoreFilm = ScoreFilm.reduce((total, score) => total + score, 0);
+    const ScoreFilmMoyen = totalScoreFilm / films.length;
 
     a = 0
     b = 0
 
-    c = 0
+    let d = 0
+    let e = 0
     for (let film of films) {
       texteHTML +=
         `<div class="carousel-item">
@@ -138,11 +120,19 @@ fetch(url, fetchOptions)
 
       a += (parseInt(film.release_date) - anneeMoyenne) * (parseInt(film.running_time) - dureeFilmMoyen)
       b += (parseInt(film.release_date) - anneeMoyenne) * (parseInt(film.release_date) - anneeMoyenne)
+
+      d += (parseInt(film.release_date) - anneeMoyenne) * (parseInt(film.rt_score) - ScoreFilmMoyen)
+      e += (parseInt(film.release_date) - anneeMoyenne) * (parseInt(film.release_date) - anneeMoyenne)
+
     }
 
     A = a / b
     B = dureeFilmMoyen - (A * anneeMoyenne)
     let l = 0
+
+    D = d / e
+    E = ScoreFilmMoyen - (D * anneeMoyenne)
+    let s = 0
 
     for (let film of films) {
       datasets2[l] = {
@@ -151,32 +141,71 @@ fetch(url, fetchOptions)
       }
       l++
 
-      label.push([`${film.title}`]);
-
       datasets.push({
-          label: `${film.title}`,
-          data: [{
-              x: `${film.release_date}`,
-              y: `${film.running_time}`
-          }],
-          type: 'scatter'
+        label: `${film.title}`,
+        data: [{
+          x: `${film.release_date}`,
+          y: `${film.running_time}`
+        }],
+        type: 'scatter',
+        pointRadius: 8,
       });
-  
-      console.log(datasets)
 
       datasets2.push({
-          x: `${film.release_date}`,
-          y: `${(A * parseInt(film.release_date)) + B}`
+        x: `${film.release_date}`,
+        y: `${(A * parseInt(film.release_date)) + B}`
       });
-  }
-  
+    }
 
-  datasets.push({
+
+    datasets.push({
       type: 'line',
-      label: "Tendency of a Courbe",
+      label: "Trend Line",
+      pointRadius: 0,
       data: datasets2
-  });
-  
+    });
+
+
+
+
+
+    for (let film of films) {
+      datasets4[s] = {
+        x: `${film.release_date}`,
+        y: `${(D * parseInt(film.release_date)) + E}`,
+      }
+      l++
+
+      datasets3.push({
+        label: `${film.title}`,
+        data: [{
+          x: `${film.release_date}`,
+          y: `${film.rt_score}`
+        }],
+        type: 'scatter',
+        pointRadius: 8,
+      });
+
+
+      datasets4.push({
+        x: `${film.release_date}`,
+        y: `${(D * parseInt(film.release_date)) + E}`
+      });
+    }
+
+
+
+    datasets3.push({
+      type: 'line',
+      label: "Trend Line",
+      pointRadius: 0,
+      data: datasets4
+    });
+
+
+
+
+
 
     document.getElementById("carous").innerHTML = texteHTML
     document.querySelector(".carousel-item").classList.add("active");
@@ -193,7 +222,7 @@ fetch(url, fetchOptions)
         elements: {
           point: {
             radius: 5,
-            hoverRadius: 8, 
+            hoverRadius: 8,
           }
         },
         indexAxis: 'x',
@@ -204,8 +233,8 @@ fetch(url, fetchOptions)
         },
         scales: {
           y: {
-            min: 0,
-            max: 140,
+            min: 20,
+            max: 160,
           },
 
         },
@@ -214,6 +243,13 @@ fetch(url, fetchOptions)
         },
       }
     });
+
+
+
+
+
+
+
   }
 
   )
