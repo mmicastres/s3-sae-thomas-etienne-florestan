@@ -50,24 +50,25 @@ fetch(url, fetchOptions)
     let films = dataJSON
 
 
-        // Calcul durée moyenne film
-        const dureeFilm = films.map(film => parseInt(film.running_time));
-        const totalDureeFilm = dureeFilm.reduce((total, duree) => total + duree, 0);
-        const dureeFilmMoyen = totalDureeFilm / films.length;
-            // Utiliser Math.round pour arrondir la moyenne pour l'affichage
-            const DureeFilmMoyenArrondi = Math.round(dureeFilmMoyen);
-            console.log(`La moyenne des temps d'exécution est de ${DureeFilmMoyenArrondi} minutes (arrondi).`);
-            console.log(dureeFilm);
-    
-        // Calcul date sortie moyenne
-        const Annee = films.map(film => parseInt(film.release_date));
-        const totalAnnee = Annee.reduce((total, annee) => total + annee, 0);
-        const anneeMoyenne = totalAnnee / films.length;
-            // Utiliser Math.round pour arrondir la moyenne pour l'affichage
-            const anneeMoyenneArrondi = Math.round(anneeMoyenne);
-            console.log(`L'année moyenne est de ${anneeMoyenneArrondi} ans (arrondi).`);
-            console.log(Annee);
+    // Calcul durée moyenne film
+    const dureeFilm = films.map(film => parseInt(film.running_time));
+    const totalDureeFilm = dureeFilm.reduce((total, duree) => total + duree, 0);
+    const dureeFilmMoyen = totalDureeFilm / films.length;
+    // Utiliser Math.round pour arrondir la moyenne pour l'affichage
+    const DureeFilmMoyenArrondi = Math.round(dureeFilmMoyen);
 
+
+    // Calcul date sortie moyenne
+    const Annee = films.map(film => parseInt(film.release_date));
+    const totalAnnee = Annee.reduce((total, annee) => total + annee, 0);
+    const anneeMoyenne = totalAnnee / films.length;
+    // Utiliser Math.round pour arrondir la moyenne pour l'affichage
+    const anneeMoyenneArrondi = Math.round(anneeMoyenne);
+
+    a = 0
+    b = 0
+
+    c = 0
     for (let film of films) {
       texteHTML +=
         `<div class="carousel-item">
@@ -105,25 +106,20 @@ fetch(url, fetchOptions)
       datasets[k] = {
         label: `${film.title}`,
         data: [{
-          x: `${film.release_date}`,
-          y: `${film.running_time}`,
+          y: `${film.release_date}`,
+          x: `${film.running_time}`,
         }],
       }
       k++
-      
-      // Pour le calcul de la courbe 
-      a = 0 
-      b = 0 
 
-      c = 0 
-      a+= ( parseInt(film.release_date) - anneeMoyenne)* ( parseInt(film.running_time) - dureeFilmMoyen )
-      b+= (( parseInt(film.release_date) - anneeMoyenne)^2)
+      // Pour le calcul de la courbe 
+
+      a += (parseInt(film.release_date) - anneeMoyenne) * (parseInt(film.running_time) - dureeFilmMoyen)
+      b += (parseInt(film.release_date) - anneeMoyenne)*(parseInt(film.release_date) - anneeMoyenne) 
     }
-    
-    A = a/b
-    B = dureeFilmMoyen - (A*anneeMoyenne)
-    console.log(a, b)
-    console.log(A, B)
+
+    A = a / b
+    B = dureeFilmMoyen - (A * anneeMoyenne)
     let l = 0
 
     for (let film of films) {
@@ -131,37 +127,37 @@ fetch(url, fetchOptions)
         label: `${film.title}`,
         data: [{
           x: `${film.release_date}`,
-          y: `${A*film.release_date-B}`,
+          y: `${(A*parseInt(film.release_date)) + B}`,
         }],
       }
       l++
     }
 
-
+    console.log(datasets2)
     document.getElementById("carous").innerHTML = texteHTML
     document.querySelector(".carousel-item").classList.add("active");
 
 
-  //   const mixedChart = new Chart(ctx, {
-  //     data: {
-  //         datasets: [{
-  //             type: 'bar',
-  //             dataset
-  //         }, {
-  //             type: 'line',
-  //             dataset2 
-  //         }],
-  //         labels: ['January', 'February', 'March', 'April']
-  //     },
-  //     options: options
-  // });
-  
+    //   const mixedChart = new Chart(ctx, {
+    //     data: {
+    //         datasets: [{
+    //             type: 'bar',
+    //             dataset
+    //         }, {
+    //             type: 'line',
+    //             dataset2 
+    //         }],
+    //         labels: ['January', 'February', 'March', 'April']
+    //     },
+    //     options: options
+    // });
+
 
 
 
     const ctx = document.getElementById('myChart');
     new Chart(ctx, {
-      type: 'line',
+      type: 'bar',
       data: {
         datasets: datasets,
       },
@@ -172,14 +168,14 @@ fetch(url, fetchOptions)
             hoverRadius: 8, // ex.: to make it bigger when user hovers put larger number than radius.
           }
         },
-        indexAxis: 'x',
+        indexAxis: 'y',
         plugins: {
           legend: {
             position: 'right'
           }
         },
         scales: {
-          y: {
+          x: {
             min: 0,
             max: 140,
           },
