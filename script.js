@@ -47,6 +47,25 @@ fetch(url, fetchOptions)
     console.log(dataJSON)// ici le traitement des données
     let films = dataJSON
 
+    
+        // Calcul durée moyenne film
+        const dureeFilm = films.map(film => parseInt(film.running_time));
+        const totalDureeFilm = dureeFilm.reduce((total, duree) => total + duree, 0);
+        const dureeFilmMoyen = totalDureeFilm / films.length;
+            // Utiliser Math.round pour arrondir la moyenne pour l'affichage
+            const DureeFilmMoyenArrondi = Math.round(dureeFilmMoyen);
+            console.log(`La moyenne des temps d'exécution est de ${DureeFilmMoyenArrondi} minutes (arrondi).`);
+            console.log(dureeFilm);
+    
+        // Calcul date sortie moyenne
+        const Annee = films.map(film => parseInt(film.release_date));
+        const totalAnnee = Annee.reduce((total, annee) => total + annee, 0);
+        const anneeMoyenne = totalAnnee / films.length;
+            // Utiliser Math.round pour arrondir la moyenne pour l'affichage
+            const anneeMoyenneArrondi = Math.round(anneeMoyenne);
+            console.log(`L'année moyenne est de ${anneeMoyenneArrondi} ans (arrondi).`);
+            console.log(Annee);
+
     for (let film of films) {
       texteHTML +=
         `<div class="carousel-item">
@@ -88,13 +107,50 @@ fetch(url, fetchOptions)
           y: `${film.running_time}`,
         }],
       }
-
       k++
+      
+      // Pour le calcul de la courbe 
+      a = 0 
+      b = 0 
 
-
+      c = 0 
+      a+= ( parseInt(film.release_date) - anneeMoyenne)* ( parseInt(film.running_time) - dureeFilmMoyen )
+      b+= (( parseInt(film.release_date) - anneeMoyenne)^2)
     }
+    
+
+
+
+    A = a/b
+    B = dureeFilmMoyen - (A*anneeMoyenne)
+    console.log(a, b)
+
+    console.log(A, B)
+
+
+
     document.getElementById("carous").innerHTML = texteHTML
     document.querySelector(".carousel-item").classList.add("active");
+
+
+  //   const mixedChart = new Chart(ctx, {
+  //     data: {
+  //         datasets: [{
+  //             type: 'bar',
+  //             label: 'Bar Dataset',
+  //             data: [10, 20, 30, 40]
+  //         }, {
+  //             type: 'line',
+  //             label: 'Line Dataset',
+  //             data: [50, 50, 50, 50],
+  //         }],
+  //         labels: ['January', 'February', 'March', 'April']
+  //     },
+  //     options: options
+  // });
+  
+
+
 
     const ctx = document.getElementById('myChart');
     new Chart(ctx, {
