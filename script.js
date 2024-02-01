@@ -41,6 +41,7 @@ fetch(url, fetchOptions)
         `<div class="carousel-item">
                 <img class="d-block w-100" src="img/bg/bgporco.png" alt="slide ${k}">
                 <div class="w-100">
+                <div>
                   <div class="name">
                     <p>${film.release_date}</p>
                     <h3>${film.original_title_romanised}</h3>
@@ -64,6 +65,7 @@ fetch(url, fetchOptions)
                       <h5><strong>Réalisateur :</strong> ${film.director}</h5>
                     </div>
                   </div>
+                </div>
                 </div>
               </div>`
       //  Permet de créer chaque film comme objet du diagram)
