@@ -1,6 +1,9 @@
 let texteHTML = ""
 let datasets = []
+let element = []
+
 let datasets2 = []
+let label = []
 
 let liensTrailers = [
   "https://www.youtube.com/watch?v=8ykEy-yPBFc&ab_channel=CrunchyrollStoreAustralia",
@@ -101,21 +104,11 @@ fetch(url, fetchOptions)
                 </div>
                 </div>
               </div>`
-      //  Permet de créer chaque film comme objet du diagram)
-
-      datasets[k] = {
-        label: `${film.title}`,
-        data: [{
-          y: `${film.release_date}`,
-          x: `${film.running_time}`,
-        }],
-      }
-      k++
 
       // Pour le calcul de la courbe 
 
       a += (parseInt(film.release_date) - anneeMoyenne) * (parseInt(film.running_time) - dureeFilmMoyen)
-      b += (parseInt(film.release_date) - anneeMoyenne)*(parseInt(film.release_date) - anneeMoyenne) 
+      b += (parseInt(film.release_date) - anneeMoyenne) * (parseInt(film.release_date) - anneeMoyenne)
     }
 
     A = a / b
@@ -124,40 +117,46 @@ fetch(url, fetchOptions)
 
     for (let film of films) {
       datasets2[l] = {
-        label: `${film.title}`,
-        data: [{
-          x: `${film.release_date}`,
-          y: `${(A*parseInt(film.release_date)) + B}`,
-        }],
+        x: `${film.release_date}`,
+        y: `${(A * parseInt(film.release_date)) + B}`,
       }
       l++
-    }
 
-    console.log(datasets2)
+      label.push([`${film.title}`]);
+
+      datasets.push({
+          label: `${film.title}`,
+          data: [{
+              x: `${film.release_date}`,
+              y: `${film.running_time}`
+          }],
+          type: 'scatter'
+      });
+  
+      console.log(datasets)
+
+      datasets2.push({
+          x: `${film.release_date}`,
+          y: `${(A * parseInt(film.release_date)) + B}`
+      });
+  }
+  
+
+  datasets.push({
+      type: 'line',
+      label: "Tendency of a Courbe",
+      data: datasets2
+  });
+  
+
     document.getElementById("carous").innerHTML = texteHTML
     document.querySelector(".carousel-item").classList.add("active");
-
-
-    //   const mixedChart = new Chart(ctx, {
-    //     data: {
-    //         datasets: [{
-    //             type: 'bar',
-    //             dataset
-    //         }, {
-    //             type: 'line',
-    //             dataset2 
-    //         }],
-    //         labels: ['January', 'February', 'March', 'April']
-    //     },
-    //     options: options
-    // });
-
 
 
 
     const ctx = document.getElementById('myChart');
     new Chart(ctx, {
-      type: 'bar',
+      type: 'scatter',
       data: {
         datasets: datasets,
       },
@@ -165,17 +164,17 @@ fetch(url, fetchOptions)
         elements: {
           point: {
             radius: 5,
-            hoverRadius: 8, // ex.: to make it bigger when user hovers put larger number than radius.
+            hoverRadius: 8, 
           }
         },
-        indexAxis: 'y',
+        indexAxis: 'x',
         plugins: {
           legend: {
             position: 'right'
           }
         },
         scales: {
-          x: {
+          y: {
             min: 0,
             max: 140,
           },
