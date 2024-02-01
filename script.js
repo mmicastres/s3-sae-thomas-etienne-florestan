@@ -125,21 +125,7 @@ fetch(url, fetchOptions)
     console.log(A, B)
 
 
-    // const films = [
-    //   { title: `${film.title}`, running_time: `${film.running_time}` },
-    // ];
-    
-    // const runningTimes = films.map(film => film.running_time);
-    // const totalRunningTime = runningTimes.reduce((total, time) => total + time, 0);
-    // const averageRunningTime = totalRunningTime / films.length;
-    
-    // const roundedAverageRunningTime = Math.round(averageRunningTime);
-    
-    // console.log(`La moyenne des temps d'exécution est de ${roundedAverageRunningTime} minutes (arrondi).`);
-    
-
-
-
+  
 
     document.getElementById("carous").innerHTML = texteHTML
     document.querySelector(".carousel-item").classList.add("active");
