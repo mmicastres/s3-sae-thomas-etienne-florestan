@@ -90,7 +90,17 @@ fetch(url, fetchOptions)
       }
       k++
       
+
+
+      // Pour le calcul de la courbe 
+      a = 0 
+      b = 0 
+
+      c = 0 
+      a+= ( parseInt(film.release_date) - anneeMoyenne)* ( parseInt(film.running_time) - dureeFilmMoyen )
+      b+= (( parseInt(film.release_date) - anneeMoyenne)^2)
     }
+    
     // Calcul durée moyenne film
     const dureeFilm = films.map(film => parseInt(film.running_time));
     const totalDureeFilm = dureeFilm.reduce((total, duree) => total + duree, 0);
@@ -108,6 +118,7 @@ fetch(url, fetchOptions)
         const anneeMoyenneArrondi = Math.round(anneeMoyenne);
         console.log(`L'année moyenne est de ${anneeMoyenneArrondi} ans (arrondi).`);
         console.log(Annee);
+<<<<<<< Updated upstream
     
         for (let film of films) {
           a = 0 
@@ -118,6 +129,9 @@ fetch(url, fetchOptions)
           b+= (( parseInt(film.release_date) - anneeMoyenne)^2)
 
     }
+=======
+  
+>>>>>>> Stashed changes
     A = a/b
     B = dureeFilmMoyen - (A*anneeMoyenne)
     console.log(a, b)
