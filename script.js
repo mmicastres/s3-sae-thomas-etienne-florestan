@@ -47,6 +47,25 @@ fetch(url, fetchOptions)
     console.log(dataJSON)// ici le traitement des données
     let films = dataJSON
 
+    
+        // Calcul durée moyenne film
+        const dureeFilm = films.map(film => parseInt(film.running_time));
+        const totalDureeFilm = dureeFilm.reduce((total, duree) => total + duree, 0);
+        const dureeFilmMoyen = totalDureeFilm / films.length;
+            // Utiliser Math.round pour arrondir la moyenne pour l'affichage
+            const DureeFilmMoyenArrondi = Math.round(dureeFilmMoyen);
+            console.log(`La moyenne des temps d'exécution est de ${DureeFilmMoyenArrondi} minutes (arrondi).`);
+            console.log(dureeFilm);
+    
+        // Calcul date sortie moyenne
+        const Annee = films.map(film => parseInt(film.release_date));
+        const totalAnnee = Annee.reduce((total, annee) => total + annee, 0);
+        const anneeMoyenne = totalAnnee / films.length;
+            // Utiliser Math.round pour arrondir la moyenne pour l'affichage
+            const anneeMoyenneArrondi = Math.round(anneeMoyenne);
+            console.log(`L'année moyenne est de ${anneeMoyenneArrondi} ans (arrondi).`);
+            console.log(Annee);
+
     for (let film of films) {
       texteHTML +=
         `<div class="carousel-item">
@@ -99,23 +118,7 @@ fetch(url, fetchOptions)
       b+= (( parseInt(film.release_date) - anneeMoyenne)^2)
     }
     
-    // Calcul durée moyenne film
-    const dureeFilm = films.map(film => parseInt(film.running_time));
-    const totalDureeFilm = dureeFilm.reduce((total, duree) => total + duree, 0);
-    const dureeFilmMoyen = totalDureeFilm / films.length;
-        // Utiliser Math.round pour arrondir la moyenne pour l'affichage
-        const DureeFilmMoyenArrondi = Math.round(dureeFilmMoyen);
-        console.log(`La moyenne des temps d'exécution est de ${DureeFilmMoyenArrondi} minutes (arrondi).`);
-        console.log(dureeFilm);
 
-    // Calcul date sortie moyenne
-    const Annee = films.map(film => parseInt(film.release_date));
-    const totalAnnee = Annee.reduce((total, annee) => total + annee, 0);
-    const anneeMoyenne = totalAnnee / films.length;
-        // Utiliser Math.round pour arrondir la moyenne pour l'affichage
-        const anneeMoyenneArrondi = Math.round(anneeMoyenne);
-        console.log(`L'année moyenne est de ${anneeMoyenneArrondi} ans (arrondi).`);
-        console.log(Annee);
 
 
     A = a/b
@@ -123,20 +126,6 @@ fetch(url, fetchOptions)
     console.log(a, b)
 
     console.log(A, B)
-
-
-    // const films = [
-    //   { title: `${film.title}`, running_time: `${film.running_time}` },
-    // ];
-    
-    // const runningTimes = films.map(film => film.running_time);
-    // const totalRunningTime = runningTimes.reduce((total, time) => total + time, 0);
-    // const averageRunningTime = totalRunningTime / films.length;
-    
-    // const roundedAverageRunningTime = Math.round(averageRunningTime);
-    
-    // console.log(`La moyenne des temps d'exécution est de ${roundedAverageRunningTime} minutes (arrondi).`);
-    
 
 
 
