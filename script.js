@@ -1,19 +1,19 @@
 let texteHTML = ""
-let datasets=[]
+let datasets = []
 let j = 0 //compteur image
 // Affichage de l'API
 const url = `https://ghibliapi.vercel.app/films/` // l’url de la ressource de l’API
 let fetchOptions = { method: 'GET' } // les options de fetch
 // executer la req AJAX
 fetch(url, fetchOptions)
-    .then((response) => { return response.json() })
-    .then((dataJSON) => { // dataJSON = les données renvoyées
-        console.log(dataJSON)// ici le traitement des données
-        let films = dataJSON
+  .then((response) => { return response.json() })
+  .then((dataJSON) => { // dataJSON = les données renvoyées
+    console.log(dataJSON)// ici le traitement des données
+    let films = dataJSON
 
-        for (let film of films) {
-            texteHTML +=
-                `<div class="carousel-item">
+    for (let film of films) {
+      texteHTML +=
+        `<div class="carousel-item">
                 <img class="d-block w-100" src="img/bg/bgporco.png" alt="slide ${j}">
                 <div class="w-100">
                   <div class="name">
@@ -38,50 +38,61 @@ fetch(url, fetchOptions)
                   </div>
                 </div>
               </div>`
-            datasets[j]={ label : `${film.title}`,
-            data: [{
-              y: `${film.release_date}`,
-              x:  `${film.running_time}`,
-          }],}
-          j++
+      //  Permet de créer chaque film comme objet du diagram)
+
+      datasets[j] = {
+        label: `${film.title}`,
+        data: [{
+          x: `${film.release_date}`,
+          y: `${film.running_time}`,
+        }],
+      }
+
+      j++
 
 
-        }
-        document.getElementById("carous").innerHTML = texteHTML
-        document.querySelector(".carousel-item").classList.add("active");
+    }
+    document.getElementById("carous").innerHTML = texteHTML
+    document.querySelector(".carousel-item").classList.add("active");
 
-  const ctx = document.getElementById('myChart');
-  new Chart(ctx, {
-        type: 'bar',
-        data: {
-            datasets: datasets,
+    const ctx = document.getElementById('myChart');
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        datasets: datasets,
+      },
+      options: {
+        elements: {
+          point: {
+            radius: 5,
+            hoverRadius: 8, // ex.: to make it bigger when user hovers put larger number than radius.
+          }
         },
-        options: {
-          indexAxis: 'y',
-            plugins: {
-                legend: {
-                    position: 'right'
-                }
-            },
-            scales: {
-                x: {
-                    min: 0,
-                    max: 140,
-                },
-      
-            },
-            legend: {
-                display: false,
-            },
-        }
+        indexAxis: 'x',
+        plugins: {
+          legend: {
+            position: 'right'
+          }
+        },
+        scales: {
+          y: {
+            min: 0,
+            max: 140,
+          },
+
+        },
+        legend: {
+          display: false,
+        },
+      }
     });
-}
+  }
 
-    )
+  )
 
-    .catch((error) => {
-        console.log(error) // gestion des erreurs
-    })
+  .catch((error) => {
+    console.log(error) // gestion des erreurs
+  })
 // affecter la classe active au premier élément du carrousel pour l'afficher
 
 // Barre de recherche
