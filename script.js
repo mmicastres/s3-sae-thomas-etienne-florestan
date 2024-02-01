@@ -1,5 +1,7 @@
 let texteHTML = ""
 let datasets = []
+let datasets2 = []
+
 let liensTrailers = [
   "https://www.youtube.com/watch?v=8ykEy-yPBFc&ab_channel=CrunchyrollStoreAustralia",
   "https://www.youtube.com/watch?v=4vPeTSRd580&ab_channel=CrunchyrollStoreAustralia",
@@ -47,7 +49,7 @@ fetch(url, fetchOptions)
     console.log(dataJSON)// ici le traitement des données
     let films = dataJSON
 
-    
+
         // Calcul durée moyenne film
         const dureeFilm = films.map(film => parseInt(film.running_time));
         const totalDureeFilm = dureeFilm.reduce((total, duree) => total + duree, 0);
@@ -118,15 +120,22 @@ fetch(url, fetchOptions)
       b+= (( parseInt(film.release_date) - anneeMoyenne)^2)
     }
     
-
-
-
     A = a/b
     B = dureeFilmMoyen - (A*anneeMoyenne)
     console.log(a, b)
-
     console.log(A, B)
+    let l = 0
 
+    for (let film of films) {
+      datasets2[l] = {
+        label: `${film.title}`,
+        data: [{
+          x: `${film.release_date}`,
+          y: `${A*film.release_date-B}`,
+        }],
+      }
+      l++
+    }
 
 
     document.getElementById("carous").innerHTML = texteHTML
@@ -137,12 +146,10 @@ fetch(url, fetchOptions)
   //     data: {
   //         datasets: [{
   //             type: 'bar',
-  //             label: 'Bar Dataset',
-  //             data: [10, 20, 30, 40]
+  //             dataset
   //         }, {
   //             type: 'line',
-  //             label: 'Line Dataset',
-  //             data: [50, 50, 50, 50],
+  //             dataset2 
   //         }],
   //         labels: ['January', 'February', 'March', 'April']
   //     },
