@@ -25,6 +25,7 @@ while (j < buttons.length) {
     buttons[j].style.cursor = urlGrab + ", pointer"; //On focus uniquement les liens
     j++;
 }
+
 // window.onload = function() {
 //     let cursor = Math.floor(Math.random() * 13);
 //     const urlDefault = `url('cursors/Click${cursor}.svg'), default`;
