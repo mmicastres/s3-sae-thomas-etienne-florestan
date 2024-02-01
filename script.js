@@ -244,7 +244,37 @@ fetch(url, fetchOptions)
       }
     });
 
+    const ctx2 = document.getElementById('myChart2');
+    new Chart(ctx2, {
+      type: 'scatter',
+      data: {
+        datasets: datasets3,
+      },
+      options: {
+        elements: {
+          point: {
+            radius: 5,
+            hoverRadius: 8,
+          }
+        },
+        indexAxis: 'x',
+        plugins: {
+          legend: {
+            position: 'right'
+          }
+        },
+        scales: {
+          y: {
+            min: 0,
+            max: 140,
+          },
 
+        },
+        legend: {
+          display: false,
+        },
+      }
+    });
 
 
 
