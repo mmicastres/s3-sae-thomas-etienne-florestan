@@ -175,7 +175,7 @@ fetch(url, fetchOptions)
           }
         },
         scales: {
-          x: {
+          x : {
             min: 0,
             max: 140,
           },
