@@ -64,7 +64,7 @@ fetch(url, fetchOptions)
                         </div>
                         
                         <div class="text text-right py-2 pl-2">
-                          Bande d'annonce
+                          Movie Trailer
                         </div>
                       </button>
                       </a>
