@@ -3,6 +3,7 @@ let datasets = []
 let liensTrailers = [] //les liens des trailers
 let j = 0 //compteur image
 // Affichage de l'API
+
 const url = `https://ghibliapi.vercel.app/films/` // l’url de la ressource de l’API
 let fetchOptions = { method: 'GET' } // les options de fetch
 // executer la req AJAX
