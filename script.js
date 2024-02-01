@@ -1,7 +1,7 @@
 let texteHTML = ""
 let datasets = []
 let liensTrailers = [] //les liens des trailers
-let j = 0 //compteur image
+let k = 0 //compteur image
 // Affichage de l'API
 
 const url = `https://ghibliapi.vercel.app/films/` // l’url de la ressource de l’API
@@ -16,7 +16,7 @@ fetch(url, fetchOptions)
     for (let film of films) {
       texteHTML +=
         `<div class="carousel-item">
-                <img class="d-block w-100" src="img/bg/bgporco.png" alt="slide ${j}">
+                <img class="d-block w-100" src="img/bg/bgporco.png" alt="slide ${k}">
                 <div class="w-100">
                   <div class="name">
                     <p>${film.release_date}</p>
@@ -42,7 +42,7 @@ fetch(url, fetchOptions)
               </div>`
       //  Permet de créer chaque film comme objet du diagram)
 
-      datasets[j] = {
+      datasets[k] = {
         label: `${film.title}`,
         data: [{
           x: `${film.release_date}`,
@@ -50,7 +50,7 @@ fetch(url, fetchOptions)
         }],
       }
 
-      j++
+      k++
 
 
     }
