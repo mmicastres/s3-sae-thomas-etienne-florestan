@@ -116,6 +116,7 @@ fetch(url, fetchOptions)
           c = 0 
           a+= ( parseInt(film.release_date) - anneeMoyenne)* ( parseInt(film.running_time) - dureeFilmMoyen )
           b+= (( parseInt(film.release_date) - anneeMoyenne)^2)
+
     }
     A = a/b
     B = dureeFilmMoyen - (A*anneeMoyenne)
@@ -142,6 +143,25 @@ fetch(url, fetchOptions)
 
     document.getElementById("carous").innerHTML = texteHTML
     document.querySelector(".carousel-item").classList.add("active");
+
+
+    const mixedChart = new Chart(ctx, {
+      data: {
+          datasets: [{
+              type: 'bar',
+              label: 'Bar Dataset',
+              data: [10, 20, 30, 40]
+          }, {
+              type: 'line',
+              label: 'Line Dataset',
+              data: [50, 50, 50, 50],
+          }],
+          labels: ['January', 'February', 'March', 'April']
+      },
+      options: options
+  });
+  
+
 
 
     const ctx = document.getElementById('myChart');
