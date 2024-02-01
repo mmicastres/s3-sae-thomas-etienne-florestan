@@ -1,5 +1,6 @@
 let texteHTML = ""
 let datasets = []
+let liens = [] //les liens des trailers
 let j = 0 //compteur image
 // Affichage de l'API
 const url = `https://ghibliapi.vercel.app/films/` // l’url de la ressource de l’API
