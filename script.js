@@ -1,4 +1,8 @@
 let texteHTML = ""
+
+let selects = document.querySelectorAll("select")
+let options = ""
+
 let liensTrailers = [
   "https://www.youtube.com/watch?v=8ykEy-yPBFc&ab_channel=CrunchyrollStoreAustralia",
   "https://www.youtube.com/watch?v=4vPeTSRd580&ab_channel=CrunchyrollStoreAustralia",
@@ -41,6 +45,8 @@ function truncate(desc) {
   else { }
   return desc
 }
+
+// Je récupère mes sélecteurs pour afficher les options
 
 // fonction traitement description
 // Affichage de l'API
@@ -118,7 +124,8 @@ fetch(url, fetchOptions)
 
       d += (parseInt(film.release_date) - anneeMoyenne) * (parseInt(film.rt_score) - ScoreFilmMoyen)
       e += (parseInt(film.release_date) - anneeMoyenne) * (parseInt(film.release_date) - anneeMoyenne)
-
+      // J'atoute les noms des films dans mes select
+      options+= `<option value= "${film.running_time}"> ${film.title} </option> `
     }
 
     let A = a / b
@@ -131,7 +138,9 @@ fetch(url, fetchOptions)
     // On récupère les éléments du carroussel qui ont été générés, et on affiche la première page
     document.getElementById("carous").innerHTML = texteHTML
     document.querySelector(".carousel-item").classList.add("active");
-
+    //On met toutes les options dans les selects 
+    selects.forEach((select)=>select.innerHTML+=options);  
+    selects.forEach((select)=>select.addEventListener("change",()=>console.log(select.value)));    
 
     let MixedChart; // Declare la variable variable pour l'instance CHartJs
 
@@ -208,6 +217,11 @@ fetch(url, fetchOptions)
           x: `${film.release_date}`,
           y: btnNumber === 1 ? `${(A * parseInt(film.release_date)) + B}` : `${(D * parseInt(film.release_date)) + E}`,
         });
+
+
+
+
+
       }
 
       datasets.push({
@@ -247,4 +261,3 @@ function hiddenOuPas() {
 }
 document.getElementById("btn1").addEventListener("click", hiddenOuPas);
 document.getElementById("btn2").addEventListener("click", hiddenOuPas);
-
