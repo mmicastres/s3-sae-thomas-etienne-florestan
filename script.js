@@ -115,7 +115,7 @@ fetch(url, fetchOptions)
                   <div class="desc">
                     <span class="text-justify">"${film.title}" ${truncate(film.description)}</span>
                     <div id="auteur">
-                      <h5><strong>Réalisateur :</strong> ${film.director}</h5>
+                      <h5><strong>Director :</strong> ${film.director}</h5>
                       
                       <button type="button" id="voirPlus${k}" class="btn btn-light align-items-stretch d-flex ">
                         
@@ -184,14 +184,24 @@ fetch(url, fetchOptions)
         <div class="col-4">
           <img class="img-fluid" src="${film.image}" alt="">
         </div>
-        <div class="col-4">
+        <div class="col-4 d-flex flex-column justify-content-between">
+          <div>
+
           <h2><strong>Japanese Name :</strong></h2>
           <h2 id="jptitle">${film.original_title}</h2>
-          <br>
+          </div>
+          <div>
+
+          <h3>A movie Scene : </h3>
+        
           <img class="img-fluid" src="${film.movie_banner}" alt="">
-          <br>
+          </div>
+          <div>
+          <h3>The movie description : </h3>
 
           <p>${film.description}</p>
+          </div>
+
         </div>
         
 
@@ -201,18 +211,18 @@ fetch(url, fetchOptions)
       <section class="text-center">
 
         <div class="d-flex flex-row col-12  justify-content-center my-5">
-          <div class="col-4 d-flex flex-column align-items-center">
+          <div class="col-4 d-flex flex-column align-items-center justify-content-between">
             <h2><strong>${film.title} running time</strong></h2>
             <h2 class="my-2 important" style="color: #ffb800;">
               <br>
-              <strong>${film.running_time}</strong>
+              <strong>${film.running_time} minutes</strong>
             </h2>
           </div>
-          <div class="col-4 d-flex flex-column align-items-center">
+          <div class="col-4 d-flex flex-column align-items-center justify-content-between">
             <h2><strong>The average Ghibli's movie running time</strong></h2>
             <h2 class="my-2 important" style="color: #ffb800;">
               <br>
-              <strong>${Math.round(dureeFilmMoyen)}</strong>
+              <strong>${Math.round(dureeFilmMoyen)} minutes</strong>
             </h2>
           </div>
         </div>
@@ -223,18 +233,18 @@ fetch(url, fetchOptions)
 
 
         <div class="d-flex flex-row col-12  justify-content-center my-5">
-          <div class="col-4 d-flex flex-column align-items-center">
+          <div class="col-4 d-flex flex-column align-items-center justify-content-between">
             <h2><strong>${film.title} Rotten Tomato score</strong></h2>
             <h2 class="my-2 important" style="color: #ffb800;">
               <br>
-              <strong> ${film.rt_score}</strong>
+              <strong> ${film.rt_score} /100</strong>
             </h2>
           </div>
           <div class="col-4 d-flex flex-column align-items-center justify-content-between">
             <h2><strong>The average Ghibli's Rotten Tomato score</strong></h2>
             <h2 class="my-2 important" style="color: #ffb800;">
               <br>
-              <strong>${Math.round(rottenTomatoTotal)}</strong>
+              <strong>${Math.round(rottenTomatoTotal)} /100</strong>
             </h2>
           </div>
         </div>
