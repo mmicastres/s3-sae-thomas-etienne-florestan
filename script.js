@@ -377,3 +377,17 @@ fetch(url, fetchOptions)
 
 document.getElementById("loupe").onclick = function () { document.getElementById("search").classList.add("searchactive") };
 
+
+// Fonction qui permet l'affichage du canvas au premier clics sur un des boutons
+let chart = document.getElementById("chart").classList
+function hiddenOuPas(){
+  if (chart.contains("d-none")){
+    chart.remove("d-none");
+  }
+  else{
+
+  }
+}
+document.getElementById("btn1").addEventListener("click", hiddenOuPas);
+document.getElementById("btn2").addEventListener("click", hiddenOuPas);
+
