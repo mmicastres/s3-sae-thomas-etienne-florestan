@@ -16,6 +16,7 @@ header {
     padding: 10px;
     /* Ajout de rembourrage pour un meilleur aspect */
 }
+
 header nav a {
 
     color: black;
@@ -25,7 +26,7 @@ header nav a {
 
 /* Permet au bouttons de recevoir le curseur du parent html, sinon il est défini en default */
 button {
-    cursor : inherit;
+    cursor: inherit;
 }
 
 #search {
@@ -38,8 +39,8 @@ button {
 }
 
 .searchactive {
-    min-width: 210px!important;
-    opacity: 1!important;
+    min-width: 210px !important;
+    opacity: 1 !important;
 }
 
 
@@ -63,7 +64,7 @@ nav ul li:last-child {
     margin-right: 0;
 }
 
-p{
+p {
     margin-bottom: 0;
 }
 
@@ -84,11 +85,17 @@ p{
     font-size: 80px;
 }
 
+#h2 {
+    font-weight: bold;
+    color: #ffb800;
+    font-size: 60px;
+}
+
 #textbutton {
     width: 400px;
 }
 
-#textbutton button{
+#textbutton button {
     width: 253px;
     height: 63px;
     border: none;
@@ -96,11 +103,12 @@ p{
     box-shadow: 0px 4px 0px 0px rgba(255, 184, 0, 0.25);
 }
 
-#textbutton a{
+#textbutton a {
     font-weight: bold;
     font-size: 25px;
     color: white;
 }
+
 /* SLIDER */
 
 #carouselExampleControls {
@@ -113,24 +121,119 @@ p{
 
 .carousel-control-prev-icon {
 
-    background-image: none!important;
+    background-image: none !important;
     background: white;
-    width: 50px!important;
-    height: 50px!important;
+    width: 50px !important;
+    height: 50px !important;
 }
 
-.carousel-control-prev{
-    opacity: 1!important;
+.carousel-control-prev {
+    opacity: 1 !important;
 }
 
-.carousel-control-next{
-    opacity: 1!important;
+.carousel-control-next {
+    opacity: 1 !important;
 }
 
 .carousel-control-next-icon {
 
-    background-image:  none!important;
+    background-image: none !important;
     background: white;
-    width: 50px!important;
-    height: 50px!important;
+    width: 50px !important;
+    height: 50px !important;
+}
+
+.btn-tomato {
+    color: #fff;
+    border-color: #8bbabb;
+    background: #8bbabb;
+}
+
+.btn-film {
+    color: #ffffff;
+    border-color: #8bbabb;
+    background: #8bbabb;
+}
+
+.btn-tomato:hover {
+    color: #000000;
+    border-color: #8bbabb87;
+    background: #8bbabb87;
+}
+
+.btn-film:hover {
+    color: #000000;
+    border-color: #8bbabb87;
+    background: #8bbabb87;
+}
+
+.chart-container {
+    position: relative;
+    height: 80vh;
+    width: 80vw;
+    display: flex;
+    margin: 50px 280px;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-ajout {
+    height: 55px;
+    text-indent: 12px;
+    border-radius: 10px;
+    border: none;
+}
+
+p {
+    margin: 0;
+}
+
+.carousel-control-prev {
+    height: 3.5vw;
+    transform: translate(1vw, 39vw);
+}
+
+.carousel-control-next {
+    height: 3.5vw;
+    transform: translateY(39vw);
+}
+
+.name {
+    position: absolute;
+    right: 100%;
+    bottom: 8.25rem;
+    left: 8%;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+    color: #000000;
+    text-align: center;
+    line-height: 80px;
+}
+
+.name p {
+    font-size: 35px;
+    font-weight: 800;
+}
+
+.name h3 {
+    padding-bottom: 25px;
+    font-size: 60px;
+    font-weight: 800;
+    /* width: 50%; */
+    line-height: 50px;
+}
+
+.desc {
+    width: 30%;
+    position: absolute;
+    bottom: 13.25rem;
+    left: 65%;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+    color: #000000;
+    text-align: justify;
+    background-color: #ffffffd1;
+    padding: 25px;
+    border-radius: 25px;
+    font-weight: 400;
 }
