@@ -1,9 +1,4 @@
 let texteHTML = ""
-// let datasets = []
-// let datasets2 = []
-// let datasets3 = []
-// let datasets4 = []
-
 let liensTrailers = [
   "https://www.youtube.com/watch?v=8ykEy-yPBFc&ab_channel=CrunchyrollStoreAustralia",
   "https://www.youtube.com/watch?v=4vPeTSRd580&ab_channel=CrunchyrollStoreAustralia",
@@ -78,11 +73,11 @@ fetch(url, fetchOptions)
     const totalScoreFilm = ScoreFilm.reduce((total, score) => total + score, 0);
     const ScoreFilmMoyen = totalScoreFilm / films.length;
 
-    a = 0
-    b = 0
-
+    let a = 0
+    let b = 0
     let d = 0
     let e = 0
+
     for (let film of films) {
       texteHTML +=
         `<div class="carousel-item">
@@ -126,163 +121,25 @@ fetch(url, fetchOptions)
 
     }
 
-    A = a / b
-    B = dureeFilmMoyen - (A * anneeMoyenne)
-    let l = 0
+    let A = a / b
+    let B = dureeFilmMoyen - (A * anneeMoyenne)
 
-    D = d / e
-    E = ScoreFilmMoyen - (D * anneeMoyenne)
-    let s = 0
+    let D = d / e
 
-    // for (let film of films) {
-    //   datasets2[l] = {
-    //     x: `${film.release_date}`,
-    //     y: `${(A * parseInt(film.release_date)) + B}`,
-    //   }
-    //   l++
+    let E = ScoreFilmMoyen - (D * anneeMoyenne)
 
-    //   datasets.push({
-    //     label: `${film.title}`,
-    //     data: [{
-    //       x: `${film.release_date}`,
-    //       y: `${film.running_time}`
-    //     }],
-    //     type: 'scatter',
-    //     pointRadius: 8,
-    //   });
-
-    //   datasets2.push({
-    //     x: `${film.release_date}`,
-    //     y: `${(A * parseInt(film.release_date)) + B}`
-    //   });
-    // }
-
-
-    // datasets.push({
-    //   type: 'line',
-    //   label: "Trend Line",
-    //   pointRadius: 0,
-    //   data: datasets2
-    // });
-
-
-
-
-
-    // for (let film of films) {
-    //   datasets4[s] = {
-    //     x: `${film.release_date}`,
-    //     y: `${(D * parseInt(film.release_date)) + E}`,
-    //   }
-    //   s++
-
-    //   datasets3.push({
-    //     label: `${film.title}`,
-    //     data: [{
-    //       x: `${film.release_date}`,
-    //       y: `${film.rt_score}`
-    //     }],
-    //     type: 'scatter',
-    //     pointRadius: 8,
-    //   });
-
-
-    //   datasets4.push({
-    //     x: `${film.release_date}`,
-    //     y: `${(D * parseInt(film.release_date)) + E}`
-    //   });
-    // }
-
-
-
-    // datasets3.push({
-    //   type: 'line',
-    //   label: "Trend Line",
-    //   pointRadius: 0,
-    //   data: datasets4
-    // });
-
-
-
-
-
-
+    // On récupère les éléments du carroussel qui ont été générés, et on affiche la première page
     document.getElementById("carous").innerHTML = texteHTML
     document.querySelector(".carousel-item").classList.add("active");
 
 
-
-    // const ctx = document.getElementById('myChart');
-    // new Chart(ctx, {
-    //   type: 'scatter',
-    //   data: {
-    //     datasets: datasets,
-    //   },
-    //   options: {
-    //     elements: {
-    //       point: {
-    //         radius: 5,
-    //         hoverRadius: 8,
-    //       }
-    //     },
-    //     indexAxis: 'x',
-    //     plugins: {
-    //       legend: {
-    //         position: 'right'
-    //       }
-    //     },
-    //     scales: {
-    //       y: {
-    //         min: 20,
-    //         max: 160,
-    //       },
-
-    //     },
-    //     legend: {
-    //       display: false,
-    //     },
-    //   }
-    // });
-
-    // const ctx2 = document.getElementById('myChart2');
-    // new Chart(ctx2, {
-    //   type: 'scatter',
-    //   data: {
-    //     datasets: datasets3,
-    //   },
-    //   options: {
-    //     elements: {
-    //       point: {
-    //         radius: 5,
-    //         hoverRadius: 8,
-    //       }
-    //     },
-    //     indexAxis: 'x',
-    //     plugins: {
-    //       legend: {
-    //         position: 'right'
-    //       }
-    //     },
-    //     scales: {
-    //       y: {
-    //         min: 0,
-    //         max: 140,
-    //       },
-
-    //     },
-    //     legend: {
-    //       display: false,
-    //     },
-    //   }
-    // });
-
-    let myChart; // Declare a global variable to store the Chart.js instance
+    let MixedChart; // Declare la variable variable pour l'instance CHartJs
 
     document.getElementById("btn1").addEventListener("click", () => ChangeCanvas(1));
     document.getElementById("btn2").addEventListener("click", () => ChangeCanvas(2));
-    
+
     function initializeChart(datasets) {
-      const ctx = document.getElementById('myChart');
+      const ctx = document.getElementById('MixedChart');
       return new Chart(ctx, {
         type: 'scatter',
         data: {
@@ -313,16 +170,16 @@ fetch(url, fetchOptions)
         },
       });
     }
-    
+
     function ChangeCanvas(btnNumber) {
-      if (myChart) {
-        myChart.destroy(); // Destroy the existing chart
+      if (MixedChart) {
+        MixedChart.destroy(); // Destroy the existing chart
       }
-    
+
       let datasets = [];
       let datasets2 = [];
       let l = 0;
-    
+
       for (let film of films) {
         if (btnNumber === 1) {
           datasets2[l] = {
@@ -336,7 +193,7 @@ fetch(url, fetchOptions)
           };
         }
         l++;
-    
+
         datasets.push({
           label: `${film.title}`,
           data: [{
@@ -346,24 +203,24 @@ fetch(url, fetchOptions)
           type: 'scatter',
           pointRadius: 10,
         });
-    
+
         datasets2.push({
           x: `${film.release_date}`,
           y: btnNumber === 1 ? `${(A * parseInt(film.release_date)) + B}` : `${(D * parseInt(film.release_date)) + E}`,
         });
       }
-    
+
       datasets.push({
         type: 'line',
         label: "Trend Line",
         pointRadius: 0,
         data: datasets2,
       });
-    
-      myChart = initializeChart(datasets);
+
+      MixedChart = initializeChart(datasets);
     }
-    
-  
+
+
   }
 
   )
@@ -380,11 +237,11 @@ document.getElementById("loupe").onclick = function () { document.getElementById
 
 // Fonction qui permet l'affichage du canvas au premier clics sur un des boutons
 let chart = document.getElementById("chart").classList
-function hiddenOuPas(){
-  if (chart.contains("d-none")){
+function hiddenOuPas() {
+  if (chart.contains("d-none")) {
     chart.remove("d-none");
   }
-  else{
+  else {
 
   }
 }
