@@ -89,7 +89,7 @@ fetch(url, fetchOptions)
     for (let film of films) {
       texteHTML +=
         `<div  id="slide${k}" class="carousel-item">
-                <img class="d-block w-100" src="img/bg/${film.title}bg.jpg" alt="slide ${k}">
+                <img class="d-block w-100" src="img/bg/${film.title}.webp" alt="slide ${k}">
                 <div class="w-100">
                 <div>
                   <div class="name">
