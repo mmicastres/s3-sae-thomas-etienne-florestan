@@ -123,11 +123,7 @@ fetch(url, fetchOptions)
                         </div>
                         
                         <div class="text text-right py-2 pl-2">
-<<<<<<< Updated upstream
                           Show more
-=======
-                          See more
->>>>>>> Stashed changes
                         </div>
                       </button>
                     </div>
