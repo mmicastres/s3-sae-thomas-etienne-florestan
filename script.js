@@ -172,13 +172,69 @@ fetch(url, fetchOptions)
       
       // Pour les infos supplémentaire du film 
       document.getElementById(`voirPlus${g}`).addEventListener("click", () => {
-      document.getElementById("infosFilm").innerHTML = `
-      <p>The average Ghibli's movie running time : ${Math.round(dureeFilmMoyen)}
-      <br>
-        ${film.title} running time is ${film.running_time}
-      </p>
-      <img src="${film.movie_banner}" alt="">
-      <img src="${film.image}" alt="">
+      document.getElementById("infosFilm").innerHTML = `  
+      <div class="d-flex justify-content-center">
+        <div class="col-4">
+          <img class="img-fluid" src="${film.image}" alt="">
+        </div>
+        <div class="col-4">
+          <h2><strong>Japanese Name :</strong></h2>
+          <h2 id="jptitle">${film.original_title}</h2>
+          <br>
+          <h2><strong>Characters :</strong></h2>
+          <ul>
+          ${film.people}
+          </ul>
+        </div>
+      </div>
+
+
+      <section class="text-center">
+
+        <div class="d-flex flex-row col-12  justify-content-center my-5">
+          <div class="col-4 d-flex flex-column align-items-center">
+            <h2><strong>${film.title} running time</strong></h2>
+            <h2 class="my-2 important" style="color: #ffb800;">
+              <br>
+              <strong>${film.running_time}</strong>
+            </h2>
+          </div>
+          <div class="col-4 d-flex flex-column align-items-center">
+            <h2><strong>The average Ghibli's movie running time</strong></h2>
+            <h2 class="my-2 important" style="color: #ffb800;">
+              <br>
+              <strong>${Math.round(dureeFilmMoyen)}</strong>
+            </h2>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-center">
+          <hr class="trait">
+        </div>
+
+
+        <div class="d-flex flex-row col-12  justify-content-center my-5">
+          <div class="col-4 d-flex flex-column align-items-center">
+            <h2><strong>${film.title} Rotten Tomato score</strong></h2>
+            <h2 class="my-2 important" style="color: #ffb800;">
+              <br>
+              <strong> ${film.rt_score}</strong>
+            </h2>
+          </div>
+          <div class="col-4 d-flex flex-column align-items-center justify-content-between">
+            <h2><strong>The average Ghibli's Rotten Tomato score</strong></h2>
+            <h2 class="my-2 important" style="color: #ffb800;">
+              <br>
+              <strong>${Math.round(dureeFilmMoyen)}</strong>
+            </h2>
+          </div>
+        </div>
+      </section>
+
+      <div class="col-12 d-flex justify-content-center">
+        <iframe width="800" height="540" src="${liensTrailers[g]}">
+        </iframe>
+      </div>
     `
 
       })
@@ -212,6 +268,12 @@ fetch(url, fetchOptions)
             },
           },
           scales: {
+            x:{
+              title: {
+                display: true,
+                text: 'Release date'
+              }
+            },
             y: {
               min: 20,
               max: 160,
