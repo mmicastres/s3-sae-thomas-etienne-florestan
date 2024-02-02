@@ -28,11 +28,6 @@ let liensTrailers = [
   "https://www.youtube.com/watch?v=V--UCVHLzAY&ab_channel=NetflixAnime",
 ]
 
-let background = [
-
-]
-
-
 
 //les liens des trailers
 let k = 0 //compteur image
@@ -111,6 +106,15 @@ fetch(url, fetchOptions)
                     <span class="text-justify">"${film.title}" ${truncate(film.description)}</span>
                     <div id="auteur">
                       <h5><strong>Réalisateur :</strong> ${film.director}</h5>
+                      <button type="button" id="VoirPlus${[k]}" class="btn btn-light align-items-stretch d-flex ">
+                        <div class="icon icon-left d-flex align-items-center justify-content-center">
+                          <i class="bi bi-play-fill"></i>
+                        </div>
+                        
+                        <div class="text text-right py-2 pl-2">
+                          Voir plus
+                        </div>
+                      </button>
                     </div>
                   </div>
                 </div>
