@@ -5,7 +5,6 @@ let texteHTML = ""
 
 // on défini la liste d'options du select
 let select = document.querySelector("select")
-console.log(select)
 let options = ""
 
 
@@ -124,7 +123,11 @@ fetch(url, fetchOptions)
                         </div>
                         
                         <div class="text text-right py-2 pl-2">
+<<<<<<< Updated upstream
                           Show more
+=======
+                          See more
+>>>>>>> Stashed changes
                         </div>
                       </button>
                     </div>
@@ -158,7 +161,17 @@ fetch(url, fetchOptions)
     let E = ScoreFilmMoyen - (D * anneeMoyenne)
 
     // On récupère les éléments du carroussel qui ont été générés, et on affiche la première page
+    // On set le hover sur tous les bouttons
     document.getElementById("carous").innerHTML = texteHTML
+
+    let buttons = document.querySelectorAll("button");
+    let j = 0
+    console.log(buttons)
+    // La boucle pour appliquer à tous 
+    while (j < buttons.length) {
+      buttons[j].style.cursor = urlGrab + ", pointer"; //On focus uniquement les liens
+      j++;
+    }
     document.querySelector(".carousel-item").classList.add("active");
     //On met toutes les options dans les select 
     select.innerHTML += options;
@@ -175,11 +188,11 @@ fetch(url, fetchOptions)
 
     for (let film of films) {
 
-      
+
       // Pour les infos supplémentaire du film 
-      document.getElementById(`voirPlus${g}`).addEventListener("click", function(g) {
-        return function (){
-      document.getElementById("infosFilm").innerHTML = `  
+      document.getElementById(`voirPlus${g}`).addEventListener("click", function (g) {
+        return function () {
+          document.getElementById("infosFilm").innerHTML = `  
       <div class="d-flex justify-content-center">
         <div class="col-4">
           <img class="img-fluid" src="${film.image}" alt="">
@@ -254,12 +267,9 @@ fetch(url, fetchOptions)
       <iframe width="1392" height="800" src="${liensTrailers[g]}" allowfullscreen></iframe>
       </div>
     `
-        console.log(g)
-      }
+        }
       }(g))
-      console.log("iframe" + g)
 
-      console.log(liensTrailers[g])
       // On ajout g++ pour le compteur d'images 
       g++
     }
@@ -372,9 +382,7 @@ fetch(url, fetchOptions)
   })
 // affecter la classe active au premier élément du carrousel pour l'afficher
 
-// Barre de recherche
 
-document.getElementById("loupe").onclick = function () { document.getElementById("search").classList.add("searchactive") };
 
 
 // Fonction qui permet l'affichage du canvas au premier clics sur un des boutons

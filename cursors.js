@@ -19,14 +19,7 @@ while (i < liens.length) {
     i++;
 }
 
-let buttons = document.querySelectorAll("button");
-let j = 0
 
-// La boucle pour appliquer à tous 
-while (j < buttons.length) {
-    buttons[j].style.cursor = urlGrab + ", pointer"; //On focus uniquement les liens
-    j++;
-}
 
 // window.onload = function() {
 //     let cursor = Math.floor(Math.random() * 13);
