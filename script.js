@@ -1,7 +1,14 @@
+// on défini le texte à l'intérieur du carrousel 
 let texteHTML = ""
 
+// on défini la liste d'options du select
 let select = document.querySelector("select")
+console.log(select)
 let options = ""
+
+// on défini les infos pour les films 
+let infos = ""
+
 
 let liensTrailers = [
   "https://www.youtube.com/watch?v=8ykEy-yPBFc&ab_channel=CrunchyrollStoreAustralia",
@@ -82,7 +89,7 @@ fetch(url, fetchOptions)
     for (let film of films) {
       texteHTML +=
         `<div  id="slide${k}" class="carousel-item">
-                <img class="d-block w-100" src="img/bg/${film.title}bg.webp" alt="slide ${k}">
+                <img class="d-block w-100" src="img/bg/${film.title}bg.jpg" alt="slide ${k}">
                 <div class="w-100">
                 <div>
                   <div class="name">
@@ -106,8 +113,10 @@ fetch(url, fetchOptions)
                     <span class="text-justify">"${film.title}" ${truncate(film.description)}</span>
                     <div id="auteur">
                       <h5><strong>Réalisateur :</strong> ${film.director}</h5>
-                      <button type="button" id="VoirPlus${[k]}" class="btn btn-light align-items-stretch d-flex ">
-                        <div class="icon icon-left d-flex align-items-center justify-content-center">
+                      
+                      <button type="button" id="voirPlus${k}" class="btn btn-light align-items-stretch d-flex ">
+                        
+                      <div class="icon icon-left d-flex align-items-center justify-content-center">
                           <i class="bi bi-play-fill"></i>
                         </div>
                         
@@ -131,8 +140,21 @@ fetch(url, fetchOptions)
       // J'atoute les noms des films dans mes select
       options += `<option value= "${k}"> ${film.title} </option> `
 
+      // définition du texte pour les infos supplémentaire des films 
+
+      infos += `
+        <p>The average Ghibli's movie running time : ${Math.round(dureeFilmMoyen)}
+        <br>
+          ${film.title} running time is ${film.running_time}
+        </p>
+        <img src="${film.movie_banner}" alt="">
+        <img src="${film.image}" alt="">
+      `
       // On ajout k++ pour le compteur d'images 
       k++
+
+
+
     }
 
     let A = a / b
@@ -147,114 +169,123 @@ fetch(url, fetchOptions)
     document.querySelector(".carousel-item").classList.add("active");
     //On met toutes les options dans les select 
     select.innerHTML += options;
-k = 0
+    let s = 0
 
-select.addEventListener("change", () => {
-  document.getElementById("slide" + k).classList.remove("active")
-  document.getElementById("slide" + select.value).classList.add("active")
-  k = select.value
-});
+    select.addEventListener("change", () => {
+      document.getElementById("slide" + s).classList.remove("active")
+      document.getElementById("slide" + select.value).classList.add("active")
+      s = select.value
+    });
 
-let MixedChart; // Declare la variable variable pour l'instance CHartJs
-
-document.getElementById("btn1").addEventListener("click", () => ChangeCanvas(1));
-document.getElementById("btn2").addEventListener("click", () => ChangeCanvas(2));
-
-function initializeChart(datasets) {
-  const ctx = document.getElementById('MixedChart');
-  return new Chart(ctx, {
-    type: 'scatter',
-    data: {
-      datasets: datasets,
-    },
-    options: {
-      elements: {
-        point: {
-          radius: 5,
-          hoverRadius: 8,
-        },
-      },
-      indexAxis: 'x',
-      plugins: {
-        legend: {
-          position: 'right',
-        },
-      },
-      scales: {
-        y: {
-          min: 20,
-          max: 160,
-        },
-      },
-      legend: {
-        display: false,
-      },
-    },
-  });
-}
-
-function ChangeCanvas(btnNumber) {
-  if (MixedChart) {
-    MixedChart.destroy(); // Destroy the existing chart
-  }
-
-  let datasets = [];
-  let datasetsTrend = [];
-
-
-  for (let film of films) {
-    if (btnNumber === 1) {
-      datasetsTrend.push({
-        x: `${film.release_date}`,
-        y: `${(A * parseInt(film.release_date)) + B}`,
+    for (let film of films) {
+      k = 0
+      // Pour les infos supplémentaire du film 
+      document.getElementById(`voirPlus${k}`).addEventListener("click", () => {
+        document.getElementById("infosFilm").innerHTML = infos
       })
-    } else if (btnNumber === 2) {
-      datasetsTrend.push({
-        x: `${film.release_date}`,
-        y: `${(D * parseInt(film.release_date)) + E}`,
-      })
+      // On ajout k++ pour le compteur d'images 
+      k++
+    }
+    let MixedChart; // Declare la variable variable pour l'instance CHartJs
+
+    document.getElementById("btn1").addEventListener("click", () => ChangeCanvas(1));
+    document.getElementById("btn2").addEventListener("click", () => ChangeCanvas(2));
+
+    function initializeChart(datasets) {
+      const ctx = document.getElementById('MixedChart');
+      return new Chart(ctx, {
+        type: 'scatter',
+        data: {
+          datasets: datasets,
+        },
+        options: {
+          elements: {
+            point: {
+              radius: 5,
+              hoverRadius: 8,
+            },
+          },
+          indexAxis: 'x',
+          plugins: {
+            legend: {
+              position: 'right',
+            },
+          },
+          scales: {
+            y: {
+              min: 20,
+              max: 160,
+            },
+          },
+          legend: {
+            display: false,
+          },
+        },
+      });
     }
 
+    function ChangeCanvas(btnNumber) {
+      if (MixedChart) {
+        MixedChart.destroy(); // Destroy the existing chart
+      }
 
-    datasets.push({
-      label: `${film.title}`,
-      data: [{
-        x: `${film.release_date}`,
-        y: btnNumber === 1 ? `${film.running_time}` : `${film.rt_score}`,
-      }],
-      type: 'scatter',
-      pointRadius: 10,
-    });
-
-    datasetsTrend.push({
-      x: `${film.release_date}`,
-      y: btnNumber === 1 ? `${(A * parseInt(film.release_date)) + B}` : `${(D * parseInt(film.release_date)) + E}`,
-    });
+      let datasets = [];
+      let datasetsTrend = [];
 
 
+      for (let film of films) {
+        if (btnNumber === 1) {
+          datasetsTrend.push({
+            x: `${film.release_date}`,
+            y: `${(A * parseInt(film.release_date)) + B}`,
+          })
+        } else if (btnNumber === 2) {
+          datasetsTrend.push({
+            x: `${film.release_date}`,
+            y: `${(D * parseInt(film.release_date)) + E}`,
+          })
+        }
+
+
+        datasets.push({
+          label: `${film.title}`,
+          data: [{
+            x: `${film.release_date}`,
+            y: btnNumber === 1 ? `${film.running_time}` : `${film.rt_score}`,
+          }],
+          type: 'scatter',
+          pointRadius: 10,
+        });
+
+        datasetsTrend.push({
+          x: `${film.release_date}`,
+          y: btnNumber === 1 ? `${(A * parseInt(film.release_date)) + B}` : `${(D * parseInt(film.release_date)) + E}`,
+        });
 
 
 
-  }
 
-  datasets.push({
-    type: 'line',
-    label: "Trend Line",
-    pointRadius: 0,
-    data: datasetsTrend,
-  });
 
-  MixedChart = initializeChart(datasets);
-}
+      }
+
+      datasets.push({
+        type: 'line',
+        label: "Trend Line",
+        pointRadius: 0,
+        data: datasetsTrend,
+      });
+
+      MixedChart = initializeChart(datasets);
+    }
 
 
   }
 
   )
 
-  .catch ((error) => {
-  console.log(error) // gestion des erreurs
-})
+  .catch((error) => {
+    console.log(error) // gestion des erreurs
+  })
 // affecter la classe active au premier élément du carrousel pour l'afficher
 
 // Barre de recherche
