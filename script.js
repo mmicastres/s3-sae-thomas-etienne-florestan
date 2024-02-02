@@ -124,7 +124,7 @@ fetch(url, fetchOptions)
                         </div>
                         
                         <div class="text text-right py-2 pl-2">
-                          Voir plus
+                          Show more
                         </div>
                       </button>
                     </div>
