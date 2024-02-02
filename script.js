@@ -1,6 +1,6 @@
 let texteHTML = ""
 
-let selects = document.querySelectorAll("select")
+let select = document.querySelector("select")
 let options = ""
 
 let liensTrailers = [
@@ -86,7 +86,7 @@ fetch(url, fetchOptions)
 
     for (let film of films) {
       texteHTML +=
-        `<div class="carousel-item">
+        `<div  id="slide${k}" class="carousel-item">
                 <img class="d-block w-100" src="img/bg/bgporco.png" alt="slide ${k}">
                 <div class="w-100">
                 <div>
@@ -125,7 +125,10 @@ fetch(url, fetchOptions)
       d += (parseInt(film.release_date) - anneeMoyenne) * (parseInt(film.rt_score) - ScoreFilmMoyen)
       e += (parseInt(film.release_date) - anneeMoyenne) * (parseInt(film.release_date) - anneeMoyenne)
       // J'atoute les noms des films dans mes select
-      options+= `<option value= "${film.running_time}"> ${film.title} </option> `
+      options += `<option value= "${k}"> ${film.title} </option> `
+
+      // On ajout k++ pour le compteur d'images 
+      k++
     }
 
     let A = a / b
@@ -138,110 +141,116 @@ fetch(url, fetchOptions)
     // On récupère les éléments du carroussel qui ont été générés, et on affiche la première page
     document.getElementById("carous").innerHTML = texteHTML
     document.querySelector(".carousel-item").classList.add("active");
-    //On met toutes les options dans les selects 
-    selects.forEach((select)=>select.innerHTML+=options);  
-    selects.forEach((select)=>select.addEventListener("change",()=>console.log(select.value)));    
+    //On met toutes les options dans les select 
+    select.innerHTML += options;
+k = 0
 
-    let MixedChart; // Declare la variable variable pour l'instance CHartJs
+select.addEventListener("change", () => {
+  document.getElementById("slide" + k).classList.remove("active")
+  document.getElementById("slide" + select.value).classList.add("active")
+  k = select.value
+});
 
-    document.getElementById("btn1").addEventListener("click", () => ChangeCanvas(1));
-    document.getElementById("btn2").addEventListener("click", () => ChangeCanvas(2));
+let MixedChart; // Declare la variable variable pour l'instance CHartJs
 
-    function initializeChart(datasets) {
-      const ctx = document.getElementById('MixedChart');
-      return new Chart(ctx, {
-        type: 'scatter',
-        data: {
-          datasets: datasets,
+document.getElementById("btn1").addEventListener("click", () => ChangeCanvas(1));
+document.getElementById("btn2").addEventListener("click", () => ChangeCanvas(2));
+
+function initializeChart(datasets) {
+  const ctx = document.getElementById('MixedChart');
+  return new Chart(ctx, {
+    type: 'scatter',
+    data: {
+      datasets: datasets,
+    },
+    options: {
+      elements: {
+        point: {
+          radius: 5,
+          hoverRadius: 8,
         },
-        options: {
-          elements: {
-            point: {
-              radius: 5,
-              hoverRadius: 8,
-            },
-          },
-          indexAxis: 'x',
-          plugins: {
-            legend: {
-              position: 'right',
-            },
-          },
-          scales: {
-            y: {
-              min: 20,
-              max: 160,
-            },
-          },
-          legend: {
-            display: false,
-          },
+      },
+      indexAxis: 'x',
+      plugins: {
+        legend: {
+          position: 'right',
         },
-      });
+      },
+      scales: {
+        y: {
+          min: 20,
+          max: 160,
+        },
+      },
+      legend: {
+        display: false,
+      },
+    },
+  });
+}
+
+function ChangeCanvas(btnNumber) {
+  if (MixedChart) {
+    MixedChart.destroy(); // Destroy the existing chart
+  }
+
+  let datasets = [];
+  let datasetsTrend = [];
+
+
+  for (let film of films) {
+    if (btnNumber === 1) {
+      datasetsTrend.push({
+        x: `${film.release_date}`,
+        y: `${(A * parseInt(film.release_date)) + B}`,
+      })
+    } else if (btnNumber === 2) {
+      datasetsTrend.push({
+        x: `${film.release_date}`,
+        y: `${(D * parseInt(film.release_date)) + E}`,
+      })
     }
 
-    function ChangeCanvas(btnNumber) {
-      if (MixedChart) {
-        MixedChart.destroy(); // Destroy the existing chart
-      }
 
-      let datasets = [];
-      let datasetsTrend = [];
+    datasets.push({
+      label: `${film.title}`,
+      data: [{
+        x: `${film.release_date}`,
+        y: btnNumber === 1 ? `${film.running_time}` : `${film.rt_score}`,
+      }],
+      type: 'scatter',
+      pointRadius: 10,
+    });
 
-
-      for (let film of films) {
-        if (btnNumber === 1) {
-          datasetsTrend.push({
-            x: `${film.release_date}`,
-            y: `${(A * parseInt(film.release_date)) + B}`,
-          })
-        } else if (btnNumber === 2) {
-          datasetsTrend.push({
-            x: `${film.release_date}`,
-            y: `${(D * parseInt(film.release_date)) + E}`,
-          })
-        }
-
-
-        datasets.push({
-          label: `${film.title}`,
-          data: [{
-            x: `${film.release_date}`,
-            y: btnNumber === 1 ? `${film.running_time}` : `${film.rt_score}`,
-          }],
-          type: 'scatter',
-          pointRadius: 10,
-        });
-
-        datasetsTrend.push({
-          x: `${film.release_date}`,
-          y: btnNumber === 1 ? `${(A * parseInt(film.release_date)) + B}` : `${(D * parseInt(film.release_date)) + E}`,
-        });
+    datasetsTrend.push({
+      x: `${film.release_date}`,
+      y: btnNumber === 1 ? `${(A * parseInt(film.release_date)) + B}` : `${(D * parseInt(film.release_date)) + E}`,
+    });
 
 
 
 
 
-      }
+  }
 
-      datasets.push({
-        type: 'line',
-        label: "Trend Line",
-        pointRadius: 0,
-        data: datasetsTrend,
-      });
+  datasets.push({
+    type: 'line',
+    label: "Trend Line",
+    pointRadius: 0,
+    data: datasetsTrend,
+  });
 
-      MixedChart = initializeChart(datasets);
-    }
+  MixedChart = initializeChart(datasets);
+}
 
 
   }
 
   )
 
-  .catch((error) => {
-    console.log(error) // gestion des erreurs
-  })
+  .catch ((error) => {
+  console.log(error) // gestion des erreurs
+})
 // affecter la classe active au premier élément du carrousel pour l'afficher
 
 // Barre de recherche
