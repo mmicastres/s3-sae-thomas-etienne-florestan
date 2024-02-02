@@ -177,22 +177,22 @@ fetch(url, fetchOptions)
       }
 
       let datasets = [];
-      let datasets2 = [];
-      let l = 0;
+      let datasetsTrend = [];
+
 
       for (let film of films) {
         if (btnNumber === 1) {
-          datasets2[l] = {
+          datasetsTrend.push({
             x: `${film.release_date}`,
             y: `${(A * parseInt(film.release_date)) + B}`,
-          };
+          })
         } else if (btnNumber === 2) {
-          datasets2[l] = {
+          datasetsTrend.push({
             x: `${film.release_date}`,
             y: `${(D * parseInt(film.release_date)) + E}`,
-          };
+          })
         }
-        l++;
+
 
         datasets.push({
           label: `${film.title}`,
@@ -204,7 +204,7 @@ fetch(url, fetchOptions)
           pointRadius: 10,
         });
 
-        datasets2.push({
+        datasetsTrend.push({
           x: `${film.release_date}`,
           y: btnNumber === 1 ? `${(A * parseInt(film.release_date)) + B}` : `${(D * parseInt(film.release_date)) + E}`,
         });
@@ -214,7 +214,7 @@ fetch(url, fetchOptions)
         type: 'line',
         label: "Trend Line",
         pointRadius: 0,
-        data: datasets2,
+        data: datasetsTrend,
       });
 
       MixedChart = initializeChart(datasets);
