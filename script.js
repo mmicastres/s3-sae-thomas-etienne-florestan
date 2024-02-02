@@ -1,8 +1,8 @@
 let texteHTML = ""
-let datasets = []
-let datasets2 = []
-let datasets3 = []
-let datasets4 = []
+// let datasets = []
+// let datasets2 = []
+// let datasets3 = []
+// let datasets4 = []
 
 let liensTrailers = [
   "https://www.youtube.com/watch?v=8ykEy-yPBFc&ab_channel=CrunchyrollStoreAustralia",
@@ -134,73 +134,73 @@ fetch(url, fetchOptions)
     E = ScoreFilmMoyen - (D * anneeMoyenne)
     let s = 0
 
-    for (let film of films) {
-      datasets2[l] = {
-        x: `${film.release_date}`,
-        y: `${(A * parseInt(film.release_date)) + B}`,
-      }
-      l++
+    // for (let film of films) {
+    //   datasets2[l] = {
+    //     x: `${film.release_date}`,
+    //     y: `${(A * parseInt(film.release_date)) + B}`,
+    //   }
+    //   l++
 
-      datasets.push({
-        label: `${film.title}`,
-        data: [{
-          x: `${film.release_date}`,
-          y: `${film.running_time}`
-        }],
-        type: 'scatter',
-        pointRadius: 8,
-      });
+    //   datasets.push({
+    //     label: `${film.title}`,
+    //     data: [{
+    //       x: `${film.release_date}`,
+    //       y: `${film.running_time}`
+    //     }],
+    //     type: 'scatter',
+    //     pointRadius: 8,
+    //   });
 
-      datasets2.push({
-        x: `${film.release_date}`,
-        y: `${(A * parseInt(film.release_date)) + B}`
-      });
-    }
-
-
-    datasets.push({
-      type: 'line',
-      label: "Trend Line",
-      pointRadius: 0,
-      data: datasets2
-    });
+    //   datasets2.push({
+    //     x: `${film.release_date}`,
+    //     y: `${(A * parseInt(film.release_date)) + B}`
+    //   });
+    // }
 
 
+    // datasets.push({
+    //   type: 'line',
+    //   label: "Trend Line",
+    //   pointRadius: 0,
+    //   data: datasets2
+    // });
 
 
 
-    for (let film of films) {
-      datasets4[s] = {
-        x: `${film.release_date}`,
-        y: `${(D * parseInt(film.release_date)) + E}`,
-      }
-      l++
-
-      datasets3.push({
-        label: `${film.title}`,
-        data: [{
-          x: `${film.release_date}`,
-          y: `${film.rt_score}`
-        }],
-        type: 'scatter',
-        pointRadius: 8,
-      });
 
 
-      datasets4.push({
-        x: `${film.release_date}`,
-        y: `${(D * parseInt(film.release_date)) + E}`
-      });
-    }
+    // for (let film of films) {
+    //   datasets4[s] = {
+    //     x: `${film.release_date}`,
+    //     y: `${(D * parseInt(film.release_date)) + E}`,
+    //   }
+    //   s++
+
+    //   datasets3.push({
+    //     label: `${film.title}`,
+    //     data: [{
+    //       x: `${film.release_date}`,
+    //       y: `${film.rt_score}`
+    //     }],
+    //     type: 'scatter',
+    //     pointRadius: 8,
+    //   });
+
+
+    //   datasets4.push({
+    //     x: `${film.release_date}`,
+    //     y: `${(D * parseInt(film.release_date)) + E}`
+    //   });
+    // }
 
 
 
-    datasets3.push({
-      type: 'line',
-      label: "Trend Line",
-      pointRadius: 0,
-      data: datasets4
-    });
+    // datasets3.push({
+    //   type: 'line',
+    //   label: "Trend Line",
+    //   pointRadius: 0,
+    //   data: datasets4
+    // });
 
 
 
@@ -212,74 +212,158 @@ fetch(url, fetchOptions)
 
 
 
-    const ctx = document.getElementById('myChart');
-    new Chart(ctx, {
-      type: 'scatter',
-      data: {
-        datasets: datasets,
-      },
-      options: {
-        elements: {
-          point: {
-            radius: 5,
-            hoverRadius: 8,
-          }
+    // const ctx = document.getElementById('myChart');
+    // new Chart(ctx, {
+    //   type: 'scatter',
+    //   data: {
+    //     datasets: datasets,
+    //   },
+    //   options: {
+    //     elements: {
+    //       point: {
+    //         radius: 5,
+    //         hoverRadius: 8,
+    //       }
+    //     },
+    //     indexAxis: 'x',
+    //     plugins: {
+    //       legend: {
+    //         position: 'right'
+    //       }
+    //     },
+    //     scales: {
+    //       y: {
+    //         min: 20,
+    //         max: 160,
+    //       },
+
+    //     },
+    //     legend: {
+    //       display: false,
+    //     },
+    //   }
+    // });
+
+    // const ctx2 = document.getElementById('myChart2');
+    // new Chart(ctx2, {
+    //   type: 'scatter',
+    //   data: {
+    //     datasets: datasets3,
+    //   },
+    //   options: {
+    //     elements: {
+    //       point: {
+    //         radius: 5,
+    //         hoverRadius: 8,
+    //       }
+    //     },
+    //     indexAxis: 'x',
+    //     plugins: {
+    //       legend: {
+    //         position: 'right'
+    //       }
+    //     },
+    //     scales: {
+    //       y: {
+    //         min: 0,
+    //         max: 140,
+    //       },
+
+    //     },
+    //     legend: {
+    //       display: false,
+    //     },
+    //   }
+    // });
+
+    let myChart; // Declare a global variable to store the Chart.js instance
+
+    document.getElementById("btn1").addEventListener("click", () => ChangeCanvas(1));
+    document.getElementById("btn2").addEventListener("click", () => ChangeCanvas(2));
+    
+    function initializeChart(datasets) {
+      const ctx = document.getElementById('myChart');
+      return new Chart(ctx, {
+        type: 'scatter',
+        data: {
+          datasets: datasets,
         },
-        indexAxis: 'x',
-        plugins: {
-          legend: {
-            position: 'right'
-          }
-        },
-        scales: {
-          y: {
-            min: 20,
-            max: 160,
+        options: {
+          elements: {
+            point: {
+              radius: 5,
+              hoverRadius: 8,
+            },
           },
-
-        },
-        legend: {
-          display: false,
-        },
-      }
-    });
-
-    const ctx2 = document.getElementById('myChart2');
-    new Chart(ctx2, {
-      type: 'scatter',
-      data: {
-        datasets: datasets3,
-      },
-      options: {
-        elements: {
-          point: {
-            radius: 5,
-            hoverRadius: 8,
-          }
-        },
-        indexAxis: 'x',
-        plugins: {
-          legend: {
-            position: 'right'
-          }
-        },
-        scales: {
-          y: {
-            min: 0,
-            max: 140,
+          indexAxis: 'x',
+          plugins: {
+            legend: {
+              position: 'right',
+            },
           },
-
+          scales: {
+            y: {
+              min: 20,
+              max: 160,
+            },
+          },
+          legend: {
+            display: false,
+          },
         },
-        legend: {
-          display: false,
-        },
+      });
+    }
+    
+    function ChangeCanvas(btnNumber) {
+      if (myChart) {
+        myChart.destroy(); // Destroy the existing chart
       }
-    });
-
-
-
-
-
+    
+      let datasets = [];
+      let datasets2 = [];
+      let l = 0;
+    
+      for (let film of films) {
+        if (btnNumber === 1) {
+          datasets2[l] = {
+            x: `${film.release_date}`,
+            y: `${(A * parseInt(film.release_date)) + B}`,
+          };
+        } else if (btnNumber === 2) {
+          datasets2[l] = {
+            x: `${film.release_date}`,
+            y: `${(D * parseInt(film.release_date)) + E}`,
+          };
+        }
+        l++;
+    
+        datasets.push({
+          label: `${film.title}`,
+          data: [{
+            x: `${film.release_date}`,
+            y: btnNumber === 1 ? `${film.running_time}` : `${film.rt_score}`,
+          }],
+          type: 'scatter',
+          pointRadius: 10,
+        });
+    
+        datasets2.push({
+          x: `${film.release_date}`,
+          y: btnNumber === 1 ? `${(A * parseInt(film.release_date)) + B}` : `${(D * parseInt(film.release_date)) + E}`,
+        });
+      }
+    
+      datasets.push({
+        type: 'line',
+        label: "Trend Line",
+        pointRadius: 0,
+        data: datasets2,
+      });
+    
+      myChart = initializeChart(datasets);
+    }
+    
+  
   }
 
   )

@@ -23,7 +23,7 @@
     <nav>
       <ul>
         <li><a href="">Accueil</a></li>
-        <li><a href="">Films</a></li>
+        <li><a href="#Films">Films</a></li>
         <li><a href="">A propos</a></li>
         <li><a href="">Contact</a></li>
       </ul>
@@ -42,13 +42,10 @@
       <img src="img/Avionclean.png" alt="Avion du film Porco Rosso">
     </div>
 
+    <section id="Films">
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="0">
+
       <div id="carous" class="m-3 carousel-inner ">
-
-
-
-
-
       </div>
 
 
@@ -67,12 +64,12 @@
       </div>
 
     </div>
-
+  </section>
 
     <div id="comparaison m-3">
       <div class="row d-flex justify-content-center">
         <div class="col-md-3">
-          <button type="button"
+          <button type="button" id="btn1"
             class="btn mb-2 mb-md-0 btn-film btn-block btn-round d-flex align-items-center justify-content-center"
             value="1">
             <img src="img/popcorn.png" alt="" width="40" style="padding: 0 5px;">FILMS
@@ -80,7 +77,7 @@
         </div>
   
         <div class="col-md-3 ">
-          <button type="button"
+          <button type="button" id="btn2"
             class="btn mb-2 mb-md-0 btn-tomato btn-block btn-round d-flex align-items-center justify-content-center"
             value="2">
             <img src="img/tomate.png" alt="" width="40" style="padding: 0 5px;">ROTTEN TOMATO
@@ -89,19 +86,14 @@
       </div>
     </div>
 
+    <p id="demo"></p>
+
+    
     <div class="chart-container">
       <canvas id="myChart"></canvas>
     </div>
 
-    <div class="chart-container">
-      <canvas id="myChart2"></canvas>
-    </div>
-
-
-
-
-
-
+    
   </main>
 
   <script src="cursors.js"></script>
@@ -155,7 +147,7 @@
 
   .chart-container {
     position: relative;
-    height: 60vh;
+    height: 80vh;
     width: 80vw;
     display: flex;
     margin: 50px 280px;
