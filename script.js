@@ -140,16 +140,6 @@ fetch(url, fetchOptions)
       // J'atoute les noms des films dans mes select
       options += `<option value= "${k}"> ${film.title} </option> `
 
-      // définition du texte pour les infos supplémentaire des films 
-
-      infos += `
-        <p>The average Ghibli's movie running time : ${Math.round(dureeFilmMoyen)}
-        <br>
-          ${film.title} running time is ${film.running_time}
-        </p>
-        <img src="${film.movie_banner}" alt="">
-        <img src="${film.image}" alt="">
-      `
       // On ajout k++ pour le compteur d'images 
       k++
 
@@ -174,11 +164,21 @@ fetch(url, fetchOptions)
     select.addEventListener("change", () => {
       document.getElementById("slide" + s).classList.remove("active")
       document.getElementById("slide" + select.value).classList.add("active")
+      document.getElementById("infosFilm").innerHTML = ""
       s = select.value
     });
 
     for (let film of films) {
       k = 0
+      // définition du texte pour les infos supplémentaire des films 
+      infos += `
+        <p>The average Ghibli's movie running time : ${Math.round(dureeFilmMoyen)}
+        <br>
+          ${film.title} running time is ${film.running_time}
+        </p>
+        <img src="${film.movie_banner}" alt="">
+        <img src="${film.image}" alt="">
+      `
       // Pour les infos supplémentaire du film 
       document.getElementById(`voirPlus${k}`).addEventListener("click", () => {
         document.getElementById("infosFilm").innerHTML = infos
