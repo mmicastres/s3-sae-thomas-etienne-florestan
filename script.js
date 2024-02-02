@@ -73,6 +73,9 @@ fetch(url, fetchOptions)
     const totalAnnee = Annee.reduce((total, annee) => total + annee, 0);
     const anneeMoyenne = totalAnnee / films.length;
 
+    const rottenTomato = films.map(film => parseInt(film.rt_score));
+    const totalRottenTomato = rottenTomato.reduce((total, duree) => total + duree, 0);
+    const rottenTomatoTotal = totalRottenTomato / films.length;
 
     // Calcul Score moyenne film
     const ScoreFilm = films.map(film => parseInt(film.rt_score));
@@ -168,8 +171,10 @@ fetch(url, fetchOptions)
 
     let g = 0
     for (let film of films) {
-
-      
+      let peoples =  []
+      for (let people of film.people){
+        peoples.push(people)
+      }
       // Pour les infos supplémentaire du film 
       document.getElementById(`voirPlus${g}`).addEventListener("click", () => {
       document.getElementById("infosFilm").innerHTML = `  
@@ -183,7 +188,7 @@ fetch(url, fetchOptions)
           <br>
           <h2><strong>Characters :</strong></h2>
           <ul>
-          ${film.people}
+          <script> </script>
           </ul>
         </div>
       </div>
@@ -225,7 +230,7 @@ fetch(url, fetchOptions)
             <h2><strong>The average Ghibli's Rotten Tomato score</strong></h2>
             <h2 class="my-2 important" style="color: #ffb800;">
               <br>
-              <strong>${Math.round(dureeFilmMoyen)}</strong>
+              <strong>${Math.round(rottenTomatoTotal)}</strong>
             </h2>
           </div>
         </div>
