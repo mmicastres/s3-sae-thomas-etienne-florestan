@@ -6,7 +6,6 @@ let select = document.querySelector("select")
 console.log(select)
 let options = ""
 
-// on défini les infos pour les films 
 
 
 let liensTrailers = [
@@ -169,15 +168,8 @@ fetch(url, fetchOptions)
 
     let g = 0
     for (let film of films) {
-      // définition du texte pour les infos supplémentaire des films 
-      infos += `
-        <p>The average Ghibli's movie running time : ${Math.round(dureeFilmMoyen)}
-        <br>
-          ${film.title} running time is ${film.running_time}
-        </p>
-        <img class="img-fluid" src="${film.movie_banner}" alt="">
-        <img src="${film.image}" alt="">
-      `
+
+      
       // Pour les infos supplémentaire du film 
       document.getElementById(`voirPlus${g}`).addEventListener("click", () => {
       document.getElementById("infosFilm").innerHTML = `
@@ -188,7 +180,6 @@ fetch(url, fetchOptions)
       <img src="${film.movie_banner}" alt="">
       <img src="${film.image}" alt="">
     `
-      console.log (infos)
 
       })
       // On ajout k++ pour le compteur d'images 
