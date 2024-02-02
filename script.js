@@ -6,8 +6,6 @@ let select = document.querySelector("select")
 console.log(select)
 let options = ""
 
-// on défini les infos pour les films 
-let infos = ""
 
 
 let liensTrailers = [
@@ -168,24 +166,26 @@ fetch(url, fetchOptions)
       s = select.value
     });
 
+    let g = 0
     for (let film of films) {
-      k = 0
-      // définition du texte pour les infos supplémentaire des films 
-      infos += `
-        <p>The average Ghibli's movie running time : ${Math.round(dureeFilmMoyen)}
-        <br>
-          ${film.title} running time is ${film.running_time}
-        </p>
-        <img class="img-fluid" src="${film.movie_banner}" alt="">
-        <img src="${film.image}" alt="">
-      `
+
+      
       // Pour les infos supplémentaire du film 
-      document.getElementById(`voirPlus${k}`).addEventListener("click", () => {
-        document.getElementById("infosFilm").innerHTML = infos
+      document.getElementById(`voirPlus${g}`).addEventListener("click", () => {
+      document.getElementById("infosFilm").innerHTML = `
+      <p>The average Ghibli's movie running time : ${Math.round(dureeFilmMoyen)}
+      <br>
+        ${film.title} running time is ${film.running_time}
+      </p>
+      <img src="${film.movie_banner}" alt="">
+      <img src="${film.image}" alt="">
+    `
+
       })
       // On ajout k++ pour le compteur d'images 
-      k++
+      g++
     }
+
     let MixedChart; // Declare la variable variable pour l'instance CHartJs
 
     document.getElementById("btn1").addEventListener("click", () => ChangeCanvas(1));
