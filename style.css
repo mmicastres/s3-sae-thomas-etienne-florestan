@@ -241,3 +241,14 @@ p {
     border-radius: 25px;
     font-weight: 400;
 }
+
+.important {
+    font-size: 4vw;
+}
+
+.trait {
+    opacity: 1;
+    width: 75%;
+    border: 3px solid #ffb800;
+    border-radius: 5px
+}
