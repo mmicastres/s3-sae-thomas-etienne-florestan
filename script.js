@@ -1,3 +1,5 @@
+
+
 // on défini le texte à l'intérieur du carrousel 
 let texteHTML = ""
 
@@ -9,28 +11,28 @@ let options = ""
 
 
 let liensTrailers = [
-  "https://www.youtube.com/watch?v=8ykEy-yPBFc&ab_channel=CrunchyrollStoreAustralia",
-  "https://www.youtube.com/watch?v=4vPeTSRd580&ab_channel=CrunchyrollStoreAustralia",
-  "https://www.youtube.com/watch?v=92a7Hj0ijLs&ab_channel=CrunchyrollStoreAustralia",
-  "https://www.youtube.com/watch?v=4bG17OYs-GA&ab_channel=CrunchyrollStoreAustralia",
-  "https://www.youtube.com/watch?v=OfkQlZArxw0&ab_channel=CrunchyrollStoreAustralia",
-  "https://www.youtube.com/watch?v=awEC-aLDzjs&ab_channel=CrunchyrollStoreAustralia",
-  "https://www.youtube.com/watch?v=_7cowIHjCD4&ab_channel=CrunchyrollStoreAustralia",
-  "https://www.youtube.com/watch?v=0pVkiod6V0U&ab_channel=CrunchyrollStoreAustralia",
-  "https://www.youtube.com/watch?v=4OiMOHRDs14&ab_channel=CrunchyrollStoreAustralia",
-  "https://www.youtube.com/watch?v=1C9ujuCPlnY&ab_channel=CrunchyrollStoreAustralia",
-  "https://www.youtube.com/watch?v=ByXuk9QqQkk&ab_channel=CrunchyrollStoreAustralia",
-  "https://www.youtube.com/watch?v=Gp-H_YOcYTM&ab_channel=CrunchyrollStoreAustralia",
-  "https://www.youtube.com/watch?v=iwROgK94zcM&ab_channel=CrunchyrollStoreAustralia",
-  "https://www.youtube.com/watch?v=8hxYx3Jq3kI&ab_channel=CrunchyrollStoreAustralia",
-  "https://www.youtube.com/watch?v=CsR3KVgBzSM&ab_channel=CrunchyrollStoreAustralia",
-  "https://www.youtube.com/watch?v=9CtIXPhPo0g&ab_channel=CrunchyrollStoreAustralia",
-  "https://www.youtube.com/watch?v=9nzpk_Br6yo&ab_channel=CrunchyrollStoreAustralia ",
-  "https://www.youtube.com/watch?v=YrueAaw0RYg&ab_channel=CrunchyrollStoreAustralia",
-  "https://www.youtube.com/watch?v=W71mtorCZDw&ab_channel=CrunchyrollStoreAustralia",
-  "https://www.youtube.com/watch?v=jjmrxqcQdYg&ab_channel=CrunchyrollStoreAustralia",
-  "https://www.youtube.com/watch?v=FRFAujm3rik&ab_channel=CrunchyrollStoreAustralia",
-  "https://www.youtube.com/watch?v=V--UCVHLzAY&ab_channel=NetflixAnime",
+  "https://www.youtube.com/embed/8ykEy-yPBFc",
+  "https://www.youtube.com/embed/4vPeTSRd580",
+  "https://www.youtube.com/embed/92a7Hj0ijLs",
+  "https://www.youtube.com/embed/4bG17OYs-GA",
+  "https://www.youtube.com/embed/OfkQlZArxw0",
+  "https://www.youtube.com/embed/awEC-aLDzjs",
+  "https://www.youtube.com/embed/_7cowIHjCD4",
+  "https://www.youtube.com/embed/0pVkiod6V0U",
+  "https://www.youtube.com/embed/4OiMOHRDs14",
+  "https://www.youtube.com/embed/1C9ujuCPlnY",
+  "https://www.youtube.com/embed/ByXuk9QqQkk",
+  "https://www.youtube.com/embed/Gp-H_YOcYTM",
+  "https://www.youtube.com/embed/iwROgK94zcM",
+  "https://www.youtube.com/embed/8hxYx3Jq3kI",
+  "https://www.youtube.com/embed/CsR3KVgBzSM",
+  "https://www.youtube.com/embed/9CtIXPhPo0g",
+  "https://www.youtube.com/embed/9nzpk_Br6yo ",
+  "https://www.youtube.com/embed/YrueAaw0RYg",
+  "https://www.youtube.com/embed/W71mtorCZDw",
+  "https://www.youtube.com/embed/jjmrxqcQdYg",
+  "https://www.youtube.com/embed/FRFAujm3rik",
+  "https://www.youtube.com/embed/V--UCVHLzAY",
 ]
 
 
@@ -170,13 +172,13 @@ fetch(url, fetchOptions)
     });
 
     let g = 0
+
     for (let film of films) {
-      let peoples =  []
-      for (let people of film.people){
-        peoples.push(people)
-      }
+
+      
       // Pour les infos supplémentaire du film 
-      document.getElementById(`voirPlus${g}`).addEventListener("click", () => {
+      document.getElementById(`voirPlus${g}`).addEventListener("click", function(g) {
+        return function (){
       document.getElementById("infosFilm").innerHTML = `  
       <div class="d-flex justify-content-center">
         <div class="col-4">
@@ -186,11 +188,13 @@ fetch(url, fetchOptions)
           <h2><strong>Japanese Name :</strong></h2>
           <h2 id="jptitle">${film.original_title}</h2>
           <br>
-          <h2><strong>Characters :</strong></h2>
-          <ul>
-          <script> </script>
-          </ul>
+          <img class="img-fluid" src="${film.movie_banner}" alt="">
+          <br>
+
+          <p>${film.description}</p>
         </div>
+        
+
       </div>
 
 
@@ -237,13 +241,16 @@ fetch(url, fetchOptions)
       </section>
 
       <div class="col-12 d-flex justify-content-center">
-        <iframe width="800" height="540" src="${liensTrailers[g]}">
-        </iframe>
+      <iframe width="1392" height="800" src="${liensTrailers[g]}" allowfullscreen></iframe>
       </div>
     `
+        console.log(g)
+      }
+      }(g))
+      console.log("iframe" + g)
 
-      })
-      // On ajout k++ pour le compteur d'images 
+      console.log(liensTrailers[g])
+      // On ajout g++ pour le compteur d'images 
       g++
     }
 
@@ -273,7 +280,7 @@ fetch(url, fetchOptions)
             },
           },
           scales: {
-            x:{
+            x: {
               title: {
                 display: true,
                 text: 'Release date'

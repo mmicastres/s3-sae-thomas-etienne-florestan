@@ -1,3 +1,4 @@
+
 // On randomize pour avoir un numéro différent à chaque actualisation
 let cursor = Math.floor(Math.random() * 13);
 console.log(cursor);
