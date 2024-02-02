@@ -176,7 +176,7 @@ fetch(url, fetchOptions)
         <br>
           ${film.title} running time is ${film.running_time}
         </p>
-        <img src="${film.movie_banner}" alt="">
+        <img class="img-fluid" src="${film.movie_banner}" alt="">
         <img src="${film.image}" alt="">
       `
       // Pour les infos supplémentaire du film 
