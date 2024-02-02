@@ -42,28 +42,28 @@
     </div>
 
     <section id="Films">
-    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="0">
+      <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="0">
 
-      <div id="carous" class="m-3 carousel-inner ">
+        <div id="carous" class="m-3 carousel-inner ">
+        </div>
+
+
+        <div>
+          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <img src="img/avant.png" class="carousel-control-prev-icon" aria-hidden="true" alt="after">
+            <p class="px-2">Previous</p>
+          </a>
+        </div>
+
+        <div>
+          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <p class="px-2">Next</p>
+            <img src="img/apres.png" class="carousel-control-next-icon" aria-hidden="true" alt="before">
+          </a>
+        </div>
+
       </div>
-
-
-      <div>
-        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-          <img src="img/avant.png" class="carousel-control-prev-icon" aria-hidden="true" alt="after">
-          <p class="px-2">Previous</p>
-        </a>
-      </div>
-
-      <div>
-        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-          <p class="px-2">Next</p>
-          <img src="img/apres.png" class="carousel-control-next-icon" aria-hidden="true" alt="before">
-        </a>
-      </div>
-
-    </div>
-  </section>
+    </section>
 
     <div id="comparaison m-3">
       <div class="row d-flex justify-content-center">
@@ -74,7 +74,7 @@
             <img src="img/popcorn.png" alt="" width="40" style="padding: 0 5px;">MOVIES
           </button>
         </div>
-  
+
         <div class="col-md-3 ">
           <button type="button" id="btn2"
             class="btn mb-2 mb-md-0 btn-tomato btn-block btn-round d-flex align-items-center justify-content-center"
@@ -87,16 +87,20 @@
 
     <p id="demo"></p>
 
-    
+
     <div id="chart" class="chart-container d-none">
       <canvas id="MixedChart"></canvas>
     </div>
 
+    <select name="select" id=""></select>
+    <select name="" id=""></select>
+    <select name="" id=""></select>
+    <select name="" id=""></select>
     <div id="comparateur" class="chart-container">
       <canvas id="BarChart"></canvas>
     </div>
 
-    
+
   </main>
 
   <script src="cursors.js"></script>
@@ -114,7 +118,7 @@
     crossorigin="anonymous"></script>
 
 
- 
+
 
 
 
@@ -123,26 +127,25 @@
 
 
 <style>
-
-  .btn-tomato{
+  .btn-tomato {
     color: #fff;
     border-color: #8bbabb;
     background: #8bbabb;
   }
 
-  .btn-film{
+  .btn-film {
     color: #ffffff;
     border-color: #8bbabb;
     background: #8bbabb;
   }
 
-  .btn-tomato:hover{
+  .btn-tomato:hover {
     color: #000000;
     border-color: #8bbabb87;
-    background:#8bbabb87;
+    background: #8bbabb87;
   }
 
-  .btn-film:hover{
+  .btn-film:hover {
     color: #000000;
     border-color: #8bbabb87;
     background: #8bbabb87;
