@@ -115,7 +115,7 @@ fetch(url, fetchOptions)
                     <span class="text-justify">"${film.title}" ${truncate(film.description)}</span>
                     <div id="auteur">
                       <h5><strong>Director :</strong> ${film.director}</h5>
-                      
+                      <a href="#infosFilm">
                       <button type="button" id="voirPlus${k}" class="btn btn-light align-items-stretch d-flex ">
                         
                       <div class="icon icon-left d-flex align-items-center justify-content-center">
@@ -126,6 +126,8 @@ fetch(url, fetchOptions)
                           Show more
                         </div>
                       </button>
+                      </a>
+
                     </div>
                   </div>
                 </div>
