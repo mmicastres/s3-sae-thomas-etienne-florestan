@@ -148,26 +148,26 @@ a:hover {
 
 .btn-tomato {
     color: #fff;
-    border-color: #8bbabb;
-    background: #8bbabb;
+    border-color: #ADCB99;
+    background: #ADCB99;
 }
 
 .btn-film {
     color: #ffffff;
-    border-color: #8bbabb;
-    background: #8bbabb;
+    border-color: #ADCB99;
+    background: #ADCB99;
 }
 
 .btn-tomato:hover {
     color: #000000;
-    border-color: #8bbabb87;
-    background: #8bbabb87;
+    border-color: #ADCB99;
+    background: #ADCB99;
 }
 
 .btn-film:hover {
     color: #000000;
-    border-color: #8bbabb87;
-    background: #8bbabb87;
+    border-color: #ADCB99;
+    background: #ADCB99;
 }
 
 .chart-container {
