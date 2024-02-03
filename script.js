@@ -140,7 +140,7 @@ fetch(url, fetchOptions)
       d += (parseInt(film.release_date) - anneeMoyenne) * (parseInt(film.rt_score) - ScoreFilmMoyen)
       e += (parseInt(film.release_date) - anneeMoyenne) * (parseInt(film.release_date) - anneeMoyenne)
       // J'atoute les noms des films dans mes select
-      options += `<option value= "${k}"> ${film.title} </option> `
+      options += `<option value= "${k}"> ${film.title}</option> `
 
       // On ajout k++ pour le compteur d'images 
       k++
@@ -174,10 +174,13 @@ fetch(url, fetchOptions)
     let s = 0
 
     select.addEventListener("change", () => {
-      document.getElementById("slide" + s).classList.remove("active")
-      document.getElementById("slide" + select.value).classList.add("active")
-      document.getElementById("infosFilm").innerHTML = ""
-      s = select.value
+      document.getElementById("slide" + s).classList.remove("active");
+      document.getElementById("slide" + select.value).classList.add("active");
+      document.getElementById("infosFilm").innerHTML = "";
+      s = select.value;
+      setTimeout(() => {
+        document.getElementById("Films").scrollIntoView({ behavior: "smooth", block: "center" });
+      }, 300);
     });
 
     let g = 0
