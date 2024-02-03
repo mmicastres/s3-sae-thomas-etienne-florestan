@@ -123,7 +123,7 @@ fetch(url, fetchOptions)
                         </div>
                         
                         <div class="text text-right py-2 pl-2">
-                          Show more
+                          Show More
                         </div>
                       </button>
                       </a>
