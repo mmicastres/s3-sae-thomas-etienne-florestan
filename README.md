@@ -1,4 +1,4 @@
-MOODLE MMI
+**Applicaiton avec API**
 
 Ceci est une application web développée dans le cadre d'une SAE ou nous avons eu pour but d'utiliser une API récupéré sur le web et l'utilisé au maximum en employé différents types de tableau complexe. Nous avons décidé de partir sur l'API du Studio Ghibli.
 
