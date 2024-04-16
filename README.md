@@ -1,1 +1,7 @@
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-718a45dd9cf7e7f842a935f5ebbe5719a5e09af4491e668f4dbf3b35d5cca122.svg)](https://classroom.github.com/online_ide?assignment_repo_id=12775076&assignment_repo_type=AssignmentRepo)
+MOODLE MMI
+
+Ceci est une application web développée dans le cadre d'une SAE "Développer des parcours utilisateur au sein d’un système d’information". Elle permet à chaque utilisateurs de créer et gérer des projets en lien avec la formation MMI.
+
+Maquette Vous pouvez consulter la maquette de l'application sur Figma : lien vers la maquette.
+
+Site Web L'application est actuellement déployée et accessible en ligne à l'adresse suivante : https://webmmi.iut-tlse3.fr/~gnt3695a/Sae303/s3-sae-thomas-etienne-florestan/
